@@ -1273,6 +1273,7 @@ body {
 .graphic_design h2 {
   font-size: 5rem;
   font-weight: 600;
+  text-align: center;
   margin: 25rem 2rem 12rem;
 }
 .graphic_design .graphicSwiper {
