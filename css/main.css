@@ -109,13 +109,13 @@ body {
   height: 100vh;
   background-color: #121212;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
 }
 .main_visual h2 {
-  font-size: 5rem;
+  font-size: 4.5rem;
   color: #fff;
-  line-height: 1.5;
+  line-height: 1.7;
+  margin: 29rem 19rem;
   text-align: center;
 }
 
@@ -1423,4 +1423,13 @@ body {
 .contact .copyright p {
   font-size: 1.6rem;
   color: #fff;
+}
+
+#container3D {
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: 0;
+  /* background-color: red; */
+  z-index: 999;
 }/*# sourceMappingURL=main.css.map */
