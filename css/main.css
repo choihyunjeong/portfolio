@@ -104,52 +104,60 @@ body {
      object-fit: cover;
 }
 
-.main_visual {
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* kpass */
+  /* baskinrobbins */
+  /* ZARA */
+  /* busancinemacenter */
+}
+.main .main_visual {
   width: 100%;
   height: 100vh;
   background-color: #121212;
   display: flex;
   justify-content: flex-start;
 }
-.main_visual h2 {
+.main .main_visual h2 {
   font-size: 4.5rem;
   color: #fff;
   line-height: 1.7;
   margin: 29rem 19rem;
   text-align: center;
 }
-
-.about {
+.main .about {
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
-.about h2 {
+.main .about h2 {
   font-size: 5rem;
   font-weight: 600;
   margin: 5rem 8rem 2rem;
 }
-.about .info_wrap {
+.main .about .info_wrap {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.about .info_wrap .info {
+.main .about .info_wrap .info {
   width: 72.91%;
   display: flex;
   gap: 15rem;
   justify-content: center;
   align-items: center;
 }
-.about .info_wrap .info .about_img {
+.main .about .info_wrap .info .about_img {
   width: 21.41%;
 }
-.about .info_wrap .info .about_img .img_wrap {
+.main .about .info_wrap .info .about_img .img_wrap {
   width: 100%;
   padding-bottom: 133.33%;
   position: relative;
 }
-.about .info_wrap .info .about_img .img_wrap img {
+.main .about .info_wrap .info .about_img .img_wrap img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -158,150 +166,150 @@ body {
   top: 0;
   left: 0;
 }
-.about .info_wrap .info .about_img .btn_wrap {
+.main .about .info_wrap .info .about_img .btn_wrap {
   width: 100%;
   border: 0.1rem solid #121212;
   border-radius: 1rem;
   margin-top: 2rem;
   transition: 0.3s;
 }
-.about .info_wrap .info .about_img .btn_wrap:hover {
+.main .about .info_wrap .info .about_img .btn_wrap:hover {
   background-color: #121212;
 }
-.about .info_wrap .info .about_img .btn_wrap:hover span {
+.main .about .info_wrap .info .about_img .btn_wrap:hover span {
   color: #fff;
 }
-.about .info_wrap .info .about_img .btn_wrap:hover img {
+.main .about .info_wrap .info .about_img .btn_wrap:hover img {
   filter: invert(1);
 }
-.about .info_wrap .info .about_img .btn_wrap a {
+.main .about .info_wrap .info .about_img .btn_wrap a {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.6rem 2rem;
 }
-.about .info_wrap .info .about_img .btn_wrap a span {
+.main .about .info_wrap .info .about_img .btn_wrap a span {
   font-size: 2rem;
 }
-.about .info_wrap .info .about_img .btn_wrap a img {
+.main .about .info_wrap .info .about_img .btn_wrap a img {
   width: 2.2rem;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-.about .info_wrap .info .about_info {
+.main .about .info_wrap .info .about_info {
   display: flex;
   gap: 30rem;
   justify-content: center;
 }
-.about .info_wrap .info .about_info .left {
+.main .about .info_wrap .info .about_info .left {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
-.about .info_wrap .info .about_info .left .profile {
+.main .about .info_wrap .info .about_info .left .profile {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-.about .info_wrap .info .about_info .left .profile h3 {
+.main .about .info_wrap .info .about_info .left .profile h3 {
   font-size: 3rem;
   font-weight: 600;
 }
-.about .info_wrap .info .about_info .left .profile .name {
+.main .about .info_wrap .info .about_info .left .profile .name {
   display: flex;
   gap: 1rem;
   align-items: flex-end;
 }
-.about .info_wrap .info .about_info .left .profile .name strong {
+.main .about .info_wrap .info .about_info .left .profile .name strong {
   font-size: 2.6rem;
   font-weight: 500;
 }
-.about .info_wrap .info .about_info .left .profile .name span {
+.main .about .info_wrap .info .about_info .left .profile .name span {
   font-size: 1.6rem;
   color: #777;
 }
-.about .info_wrap .info .about_info .left .profile p {
+.main .about .info_wrap .info .about_info .left .profile p {
   font-size: 2rem;
   line-height: 1.6;
 }
-.about .info_wrap .info .about_info .left .education {
+.main .about .info_wrap .info .about_info .left .education {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-.about .info_wrap .info .about_info .left .education h3 {
+.main .about .info_wrap .info .about_info .left .education h3 {
   font-size: 3rem;
   font-weight: 600;
 }
-.about .info_wrap .info .about_info .left .education span {
+.main .about .info_wrap .info .about_info .left .education span {
   font-size: 1.8rem;
   color: #777;
 }
-.about .info_wrap .info .about_info .left .education p {
+.main .about .info_wrap .info .about_info .left .education p {
   font-size: 2rem;
   line-height: 1.5;
 }
-.about .info_wrap .info .about_info .right {
+.main .about .info_wrap .info .about_info .right {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
-.about .info_wrap .info .about_info .right .experience {
+.main .about .info_wrap .info .about_info .right .experience {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-.about .info_wrap .info .about_info .right .experience h3 {
+.main .about .info_wrap .info .about_info .right .experience h3 {
   font-size: 3rem;
   font-weight: 600;
 }
-.about .info_wrap .info .about_info .right .experience span {
+.main .about .info_wrap .info .about_info .right .experience span {
   font-size: 1.8rem;
   color: #777;
 }
-.about .info_wrap .info .about_info .right .experience p {
+.main .about .info_wrap .info .about_info .right .experience p {
   font-size: 2rem;
   line-height: 1.5;
 }
-.about .info_wrap .info .about_info .right .certificate {
+.main .about .info_wrap .info .about_info .right .certificate {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-.about .info_wrap .info .about_info .right .certificate h3 {
+.main .about .info_wrap .info .about_info .right .certificate h3 {
   font-size: 3rem;
   font-weight: 600;
 }
-.about .info_wrap .info .about_info .right .certificate .text_wrap {
+.main .about .info_wrap .info .about_info .right .certificate .text_wrap {
   display: flex;
   gap: 1rem;
   align-items: flex-end;
 }
-.about .info_wrap .info .about_info .right .certificate .text_wrap span {
+.main .about .info_wrap .info .about_info .right .certificate .text_wrap span {
   font-size: 1.8rem;
   color: #777;
 }
-.about .info_wrap .info .about_info .right .certificate .text_wrap p {
+.main .about .info_wrap .info .about_info .right .certificate .text_wrap p {
   font-size: 2rem;
 }
-.about .skills {
+.main .about .skills {
   margin-top: 13rem;
 }
-.about .skills .swiper-wrapper {
+.main .about .skills .swiper-wrapper {
   width: 100%;
   transition-timing-function: linear;
   overflow: visible;
 }
-.about .skills .swiper-wrapper .swiper-slide {
+.main .about .skills .swiper-wrapper .swiper-slide {
   width: 3.9%;
 }
-.about .skills .swiper-wrapper .swiper-slide .img_wrap {
+.main .about .skills .swiper-wrapper .swiper-slide .img_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.about .skills .swiper-wrapper .swiper-slide .img_wrap img {
+.main .about .skills .swiper-wrapper .swiper-slide .img_wrap img {
   width: 80%;
   height: 80%;
   -o-object-fit: cover;
@@ -310,8 +318,8 @@ body {
   top: 0;
   left: 0;
 }
-
-.project .project_intro {
+.main .project .project_intro {
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -319,7 +327,7 @@ body {
   width: 100%;
   background-color: #121212;
 }
-.project .project_intro h2 {
+.main .project .project_intro h2 {
   font-size: 20rem;
   font-weight: 600;
   opacity: 0.1;
@@ -330,7 +338,7 @@ body {
   white-space: nowrap;
   color: #fff;
 }
-.project .project_intro .zoom_item {
+.main .project .project_intro .zoom_item {
   position: absolute;
   transform-origin: center center;
   /* 상세페이지 */
@@ -346,107 +354,101 @@ body {
   /* 캠핑장 */
   /* 샌드위치포스터 */
 }
-.project .project_intro .zoom_item[data-layer="3"] {
+.main .project .project_intro .zoom_item[data-layer="3"] {
   opacity: 0.6;
   z-index: 3;
 }
-.project .project_intro .zoom_item[data-layer="2"] {
+.main .project .project_intro .zoom_item[data-layer="2"] {
   opacity: 0.4;
   z-index: 2;
 }
-.project .project_intro .zoom_item[data-layer="1"] {
+.main .project .project_intro .zoom_item[data-layer="1"] {
   opacity: 0.2;
   z-index: 1;
 }
-.project .project_intro .zoom_item:nth-child(2) {
+.main .project .project_intro .zoom_item:nth-child(2) {
   left: 25%;
   top: 15%;
   width: 9vw;
 }
-.project .project_intro .zoom_item:nth-child(3) {
+.main .project .project_intro .zoom_item:nth-child(3) {
   left: 36%;
   top: -5%;
   width: 8vw;
 }
-.project .project_intro .zoom_item:nth-child(4) {
+.main .project .project_intro .zoom_item:nth-child(4) {
   left: 11vw;
   top: 35%;
   width: 20vw;
 }
-.project .project_intro .zoom_item:nth-child(5) {
+.main .project .project_intro .zoom_item:nth-child(5) {
   right: 30%;
   top: 11%;
   width: 7.6vw;
 }
-.project .project_intro .zoom_item:nth-child(6) {
+.main .project .project_intro .zoom_item:nth-child(6) {
   bottom: auto;
   right: 7%;
   top: 28%;
   width: 13.2vw;
 }
-.project .project_intro .zoom_item:nth-child(7) {
+.main .project .project_intro .zoom_item:nth-child(7) {
   top: 25%;
   right: 22%;
   width: 4.7vw;
 }
-.project .project_intro .zoom_item:nth-child(8) {
+.main .project .project_intro .zoom_item:nth-child(8) {
   /* bottom: 40%; */
   left: 10%;
   top: 5%;
   width: 7vw;
 }
-.project .project_intro .zoom_item:nth-child(9) {
+.main .project .project_intro .zoom_item:nth-child(9) {
   bottom: -5%;
   left: 32%;
   width: 5.9vw;
 }
-.project .project_intro .zoom_item:nth-child(10) {
+.main .project .project_intro .zoom_item:nth-child(10) {
   bottom: 13.5%;
   left: 15%;
   width: 12vw;
 }
-.project .project_intro .zoom_item:nth-child(11) {
+.main .project .project_intro .zoom_item:nth-child(11) {
   bottom: 5.5%;
   right: 15%;
   width: 15vw;
 }
-.project .project_intro .zoom_item:nth-child(12) {
+.main .project .project_intro .zoom_item:nth-child(12) {
   bottom: 10.5%;
   left: auto;
   right: 38%;
   width: 8.3vw;
 }
-.project .project_intro .zoom_item:nth-child(13) {
+.main .project .project_intro .zoom_item:nth-child(13) {
   right: 4%;
   top: 5%;
   width: 6.1vw;
 }
-.project .project_intro .zoom_item:not(.heading) {
+.main .project .project_intro .zoom_item:not(.heading) {
   max-height: 300px;
   max-width: 300px;
 }
-.project .project_intro .zoom_item img {
+.main .project .project_intro .zoom_item img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.project .project_list {
+.main .kpass {
   width: 100%;
-  /* kpass */
-  /* baskinrobbins */
-  /* ZARA */
-  /* busancinemacenter */
-}
-.project .project_list .kpass {
   height: 100vh;
   display: flex;
   background: #78B1F5;
 }
-.project .project_list .kpass .left {
+.main .kpass .left {
   width: 55.72%;
   position: relative;
 }
-.project .project_list .kpass .left img {
+.main .kpass .left img {
   width: 50%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -456,21 +458,21 @@ body {
   transform: rotateY(180deg);
   opacity: 0.7;
 }
-.project .project_list .kpass .left .title_wrap {
+.main .kpass .left .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.project .project_list .kpass .left .title_wrap .title {
+.main .kpass .left .title_wrap .title {
   position: relative;
 }
-.project .project_list .kpass .left .title_wrap .title h2 {
+.main .kpass .left .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.project .project_list .kpass .left .title_wrap .title .tool_wrap {
+.main .kpass .left .title_wrap .title .tool_wrap {
   width: 13%;
   display: flex;
   gap: 1rem;
@@ -480,12 +482,12 @@ body {
   left: 15.5rem;
   z-index: 9;
 }
-.project .project_list .kpass .left .title_wrap .title .tool_wrap .icon_wrap {
+.main .kpass .left .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.project .project_list .kpass .left .title_wrap .title .tool_wrap .icon_wrap img {
+.main .kpass .left .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -495,16 +497,16 @@ body {
   display: block;
   opacity: 1;
 }
-.project .project_list .kpass .left .title_wrap p {
+.main .kpass .left .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.project .project_list .kpass .right {
+.main .kpass .right {
   width: 44.28%;
   background-color: #B4D6FF;
   position: relative;
 }
-.project .project_list .kpass .right .img_wrap {
+.main .kpass .right .img_wrap {
   width: 52.94%;
   padding-bottom: 62.57%;
   position: relative;
@@ -513,7 +515,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .kpass .right .img_wrap img {
+.main .kpass .right .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -521,47 +523,47 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .kpass .right .text_wrap {
+.main .kpass .right .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .kpass .right .text_wrap p {
+.main .kpass .right .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap {
+.main .kpass .right .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .list {
+.main .kpass .right .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .list li {
+.main .kpass .right .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .list li strong {
+.main .kpass .right .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .list li span {
+.main .kpass .right .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .qr_wrap {
+.main .kpass .right .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.project .project_list .kpass .right .text_wrap .list_wrap .qr_wrap img {
+.main .kpass .right .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -569,7 +571,7 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .kpass .right .link_wrap {
+.main .kpass .right .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -578,7 +580,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.project .project_list .kpass .right .link_wrap a {
+.main .kpass .right .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -589,47 +591,48 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.project .project_list .kpass .right .link_wrap a:hover {
+.main .kpass .right .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.project .project_list .kpass .right .link_wrap a:first-child {
+.main .kpass .right .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.project .project_list .kpass .right .link_wrap a:first-child span {
+.main .kpass .right .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.project .project_list .kpass .right .link_wrap a:first-child img {
+.main .kpass .right .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.project .project_list .kpass .right .link_wrap a:first-child:hover span {
+.main .kpass .right .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.project .project_list .kpass .right .link_wrap a:first-child:hover img {
+.main .kpass .right .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.project .project_list .baskinrobbins {
+.main .baskinrobbins {
+  width: 100%;
   height: 100vh;
   display: flex;
   overflow: hidden;
 }
-.project .project_list .baskinrobbins .left {
+.main .baskinrobbins .left {
   width: 44.28%;
   background-color: #FFE4EA;
   position: relative;
 }
-.project .project_list .baskinrobbins .left .img_wrap {
+.main .baskinrobbins .left .img_wrap {
   width: 100%;
   padding-bottom: 66.7%;
   position: relative;
@@ -637,7 +640,7 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .baskinrobbins .left .img_wrap img {
+.main .baskinrobbins .left .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -645,48 +648,48 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .baskinrobbins .left .text_wrap {
+.main .baskinrobbins .left .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .baskinrobbins .left .text_wrap p {
+.main .baskinrobbins .left .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap {
+.main .baskinrobbins .left .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .list {
+.main .baskinrobbins .left .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .list li {
+.main .baskinrobbins .left .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .list li strong {
+.main .baskinrobbins .left .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .list li span {
+.main .baskinrobbins .left .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .qr_wrap {
+.main .baskinrobbins .left .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   padding-bottom: 100%;
   position: relative;
 }
-.project .project_list .baskinrobbins .left .text_wrap .list_wrap .qr_wrap img {
+.main .baskinrobbins .left .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -694,7 +697,7 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .baskinrobbins .left .link_wrap {
+.main .baskinrobbins .left .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -703,7 +706,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.project .project_list .baskinrobbins .left .link_wrap a {
+.main .baskinrobbins .left .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -714,43 +717,43 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.project .project_list .baskinrobbins .left .link_wrap a:hover {
+.main .baskinrobbins .left .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.project .project_list .baskinrobbins .left .link_wrap a:first-child {
+.main .baskinrobbins .left .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.project .project_list .baskinrobbins .left .link_wrap a:first-child span {
+.main .baskinrobbins .left .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.project .project_list .baskinrobbins .left .link_wrap a:first-child img {
+.main .baskinrobbins .left .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.project .project_list .baskinrobbins .left .link_wrap a:first-child:hover span {
+.main .baskinrobbins .left .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.project .project_list .baskinrobbins .left .link_wrap a:first-child:hover img {
+.main .baskinrobbins .left .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.project .project_list .baskinrobbins .right {
+.main .baskinrobbins .right {
   width: 55.72%;
   position: relative;
   background: #E38C9C;
   background: linear-gradient(0deg, rgba(227, 140, 156, 0) 0%, rgb(227, 140, 156) 50%);
 }
-.project .project_list .baskinrobbins .right img {
+.main .baskinrobbins .right img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -759,21 +762,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.project .project_list .baskinrobbins .right .title_wrap {
+.main .baskinrobbins .right .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.project .project_list .baskinrobbins .right .title_wrap .title {
+.main .baskinrobbins .right .title_wrap .title {
   position: relative;
 }
-.project .project_list .baskinrobbins .right .title_wrap .title h2 {
+.main .baskinrobbins .right .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.project .project_list .baskinrobbins .right .title_wrap .title .tool_wrap {
+.main .baskinrobbins .right .title_wrap .title .tool_wrap {
   width: 17%;
   display: flex;
   gap: 1rem;
@@ -783,12 +786,12 @@ body {
   left: 27.5rem;
   z-index: 9;
 }
-.project .project_list .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap {
+.main .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.project .project_list .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap img {
+.main .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -797,22 +800,23 @@ body {
   left: 0;
   display: block;
 }
-.project .project_list .baskinrobbins .right .title_wrap p {
+.main .baskinrobbins .right .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.project .project_list .ZARA {
+.main .ZARA {
+  width: 100%;
   height: 100vh;
   display: flex;
   overflow: hidden;
 }
-.project .project_list .ZARA .left {
+.main .ZARA .left {
   width: 55.72%;
   position: relative;
   background: #121212;
   background: linear-gradient(0deg, rgba(18, 18, 18, 0) 0%, rgb(18, 18, 18) 65%);
 }
-.project .project_list .ZARA .left img {
+.main .ZARA .left img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -821,21 +825,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.project .project_list .ZARA .left .title_wrap {
+.main .ZARA .left .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.project .project_list .ZARA .left .title_wrap .title {
+.main .ZARA .left .title_wrap .title {
   position: relative;
 }
-.project .project_list .ZARA .left .title_wrap .title h2 {
+.main .ZARA .left .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.project .project_list .ZARA .left .title_wrap .title .tool_wrap {
+.main .ZARA .left .title_wrap .title .tool_wrap {
   width: 38%;
   display: flex;
   gap: 1rem;
@@ -845,12 +849,12 @@ body {
   left: 15.5rem;
   z-index: 9;
 }
-.project .project_list .ZARA .left .title_wrap .title .tool_wrap .icon_wrap {
+.main .ZARA .left .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.project .project_list .ZARA .left .title_wrap .title .tool_wrap .icon_wrap img {
+.main .ZARA .left .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -859,15 +863,15 @@ body {
   left: 0;
   display: block;
 }
-.project .project_list .ZARA .left .title_wrap p {
+.main .ZARA .left .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.project .project_list .ZARA .right {
+.main .ZARA .right {
   width: 44.28%;
   position: relative;
 }
-.project .project_list .ZARA .right .img_wrap {
+.main .ZARA .right .img_wrap {
   width: 52.94%;
   padding-bottom: 62.57%;
   position: relative;
@@ -876,7 +880,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .ZARA .right .img_wrap img {
+.main .ZARA .right .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -884,47 +888,47 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .ZARA .right .text_wrap {
+.main .ZARA .right .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .ZARA .right .text_wrap p {
+.main .ZARA .right .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap {
+.main .ZARA .right .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .list {
+.main .ZARA .right .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .list li {
+.main .ZARA .right .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .list li strong {
+.main .ZARA .right .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .list li span {
+.main .ZARA .right .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .qr_wrap {
+.main .ZARA .right .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.project .project_list .ZARA .right .text_wrap .list_wrap .qr_wrap img {
+.main .ZARA .right .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -932,7 +936,7 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .ZARA .right .link_wrap {
+.main .ZARA .right .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -941,7 +945,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.project .project_list .ZARA .right .link_wrap a {
+.main .ZARA .right .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -952,45 +956,46 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.project .project_list .ZARA .right .link_wrap a:hover {
+.main .ZARA .right .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.project .project_list .ZARA .right .link_wrap a:first-child {
+.main .ZARA .right .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.project .project_list .ZARA .right .link_wrap a:first-child span {
+.main .ZARA .right .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.project .project_list .ZARA .right .link_wrap a:first-child img {
+.main .ZARA .right .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.project .project_list .ZARA .right .link_wrap a:first-child:hover span {
+.main .ZARA .right .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.project .project_list .ZARA .right .link_wrap a:first-child:hover img {
+.main .ZARA .right .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.project .project_list .BusanCinemaCenter {
+.main .BusanCinemaCenter {
+  width: 100%;
   height: 100vh;
   display: flex;
 }
-.project .project_list .BusanCinemaCenter .left {
+.main .BusanCinemaCenter .left {
   width: 44.28%;
   position: relative;
 }
-.project .project_list .BusanCinemaCenter .left .img_wrap {
+.main .BusanCinemaCenter .left .img_wrap {
   width: 45.88%;
   padding-bottom: 97.43%;
   position: relative;
@@ -999,7 +1004,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .BusanCinemaCenter .left .img_wrap img {
+.main .BusanCinemaCenter .left .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1007,47 +1012,47 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap {
+.main .BusanCinemaCenter .left .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap p {
+.main .BusanCinemaCenter .left .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li strong {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li span {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.project .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap img {
+.main .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1055,7 +1060,7 @@ body {
   top: 0;
   left: 0;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap {
+.main .BusanCinemaCenter .left .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -1064,7 +1069,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a {
+.main .BusanCinemaCenter .left .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -1075,43 +1080,43 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:hover {
+.main .BusanCinemaCenter .left .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:first-child {
+.main .BusanCinemaCenter .left .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:first-child span {
+.main .BusanCinemaCenter .left .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:first-child img {
+.main .BusanCinemaCenter .left .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:first-child:hover span {
+.main .BusanCinemaCenter .left .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.project .project_list .BusanCinemaCenter .left .link_wrap a:first-child:hover img {
+.main .BusanCinemaCenter .left .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.project .project_list .BusanCinemaCenter .right {
+.main .BusanCinemaCenter .right {
   width: 55.72%;
   position: relative;
   background: #344161;
   background: linear-gradient(0deg, rgba(52, 65, 97, 0) 0%, rgb(52, 65, 97) 50%);
 }
-.project .project_list .BusanCinemaCenter .right img {
+.main .BusanCinemaCenter .right img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1120,21 +1125,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap {
+.main .BusanCinemaCenter .right .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap .title {
+.main .BusanCinemaCenter .right .title_wrap .title {
   position: relative;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap .title h2 {
+.main .BusanCinemaCenter .right .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap {
+.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap {
   width: 17%;
   display: flex;
   gap: 1rem;
@@ -1144,12 +1149,12 @@ body {
   left: 24.5rem;
   z-index: 9;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap {
+.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap img {
+.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1158,26 +1163,26 @@ body {
   left: 0;
   display: block;
 }
-.project .project_list .BusanCinemaCenter .right .title_wrap p {
+.main .BusanCinemaCenter .right .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-
-.clone_coding {
+.main .clone_coding {
   width: 100%;
+  height: 100vh;
 }
-.clone_coding h2 {
+.main .clone_coding h2 {
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
   margin: 15rem auto 10rem;
 }
-.clone_coding .list {
+.main .clone_coding .list {
   display: flex;
   gap: 1rem;
   justify-content: center;
 }
-.clone_coding .list .item {
+.main .clone_coding .list .item {
   width: 15.62%;
   height: 50rem;
   background-color: #eee;
@@ -1187,43 +1192,43 @@ body {
   overflow: hidden;
   transition: all 0.3s;
 }
-.clone_coding .list .item:hover {
+.main .clone_coding .list .item:hover {
   width: 21.87%;
   background-color: #121212;
 }
-.clone_coding .list .item:hover .title_wrap {
+.main .clone_coding .list .item:hover .title_wrap {
   color: #fff;
 }
-.clone_coding .list .item:hover .title_wrap .btn_wrap {
+.main .clone_coding .list .item:hover .title_wrap .btn_wrap {
   display: flex;
 }
-.clone_coding .list .item:hover .text_wrap .default {
+.main .clone_coding .list .item:hover .text_wrap .default {
   display: none;
 }
-.clone_coding .list .item:hover .text_wrap .hover {
+.main .clone_coding .list .item:hover .text_wrap .hover {
   display: block;
 }
-.clone_coding .list .item:hover .img_wrap {
+.main .clone_coding .list .item:hover .img_wrap {
   left: 50%;
   transform: translateX(-50%);
 }
-.clone_coding .list .item .title_wrap {
+.main .clone_coding .list .item .title_wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.clone_coding .list .item .title_wrap .title h3 {
+.main .clone_coding .list .item .title_wrap .title h3 {
   font-size: 3rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-.clone_coding .list .item .title_wrap .title span {
+.main .clone_coding .list .item .title_wrap .title span {
   font-size: 2rem;
 }
-.clone_coding .list .item .title_wrap .btn_wrap {
+.main .clone_coding .list .item .title_wrap .btn_wrap {
   display: none;
 }
-.clone_coding .list .item .title_wrap .btn_wrap .btn_hover {
+.main .clone_coding .list .item .title_wrap .btn_wrap .btn_hover {
   display: block;
   width: 5rem;
   height: 5rem;
@@ -1233,68 +1238,66 @@ body {
   justify-content: center;
   align-items: center;
 }
-.clone_coding .list .item .title_wrap .btn_wrap .btn_hover img {
+.main .clone_coding .list .item .title_wrap .btn_wrap .btn_hover img {
   width: 2.8rem;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-.clone_coding .list .item .text_wrap {
+.main .clone_coding .list .item .text_wrap {
   margin-top: 3rem;
 }
-.clone_coding .list .item .text_wrap .default {
+.main .clone_coding .list .item .text_wrap .default {
   font-size: 1.6rem;
   line-height: 1.5;
 }
-.clone_coding .list .item .text_wrap .hover {
+.main .clone_coding .list .item .text_wrap .hover {
   font-size: 1.6rem;
   line-height: 1.5;
   color: #fff;
   display: none;
 }
-.clone_coding .list .item .img_wrap {
+.main .clone_coding .list .item .img_wrap {
   height: 38%;
   position: absolute;
   bottom: 3rem;
   left: 6rem;
 }
-.clone_coding .list .item .img_wrap img {
+.main .clone_coding .list .item .img_wrap img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-
-.graphic_design {
+.main .graphic_design {
   max-width: 180rem;
   height: 100vh;
   margin: 0 auto;
 }
-.graphic_design h2 {
+.main .graphic_design h2 {
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
   margin: 25rem 2rem 12rem;
 }
-.graphic_design .graphicSwiper {
+.main .graphic_design .graphicSwiper {
   overflow: visible;
 }
-.graphic_design .graphicSwiper .swiper-wrapper {
+.main .graphic_design .graphicSwiper .swiper-wrapper {
   align-items: center;
   transition-timing-function: linear;
 }
-.graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap {
+.main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap {
   width: 100%;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1882352941);
 }
-.graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap img {
+.main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-
-.contact {
+.main .contact {
   width: 100%;
   height: 100vh;
   background-color: #121212;
@@ -1305,25 +1308,25 @@ body {
   border-top-right-radius: 8rem;
   position: relative;
 }
-.contact .contact_header {
+.main .contact .contact_header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 5rem;
   padding: 0 8rem;
 }
-.contact .contact_header li a {
+.main .contact .contact_header li a {
   color: #fff;
   font-size: 4rem;
   font-weight: 500;
 }
-.contact .contact_header li a img {
+.main .contact .contact_header li a img {
   width: 9rem;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-.contact .contact_wrap {
+.main .contact .contact_wrap {
   width: 100%;
   display: flex;
   gap: 15rem;
@@ -1331,20 +1334,20 @@ body {
   justify-content: center;
   margin-top: 20rem;
 }
-.contact .contact_wrap .address {
+.main .contact .contact_wrap .address {
   width: 13.02%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-.contact .contact_wrap .address .img_wrap {
+.main .contact .contact_wrap .address .img_wrap {
   width: 100%;
   padding-bottom: 100%;
   background-color: #fff;
   border-radius: 1rem;
   position: relative;
 }
-.contact .contact_wrap .address .img_wrap img {
+.main .contact .contact_wrap .address .img_wrap img {
   width: 90%;
   height: 90%;
   -o-object-fit: cover;
@@ -1354,63 +1357,63 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.contact .contact_wrap .address .call {
+.main .contact .contact_wrap .address .call {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   margin-left: 1rem;
 }
-.contact .contact_wrap .address .call .phone {
+.main .contact .contact_wrap .address .call .phone {
   display: flex;
   gap: 2rem;
 }
-.contact .contact_wrap .address .call .phone img {
+.main .contact .contact_wrap .address .call .phone img {
   width: 2.2rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.contact .contact_wrap .address .call .phone span {
+.main .contact .contact_wrap .address .call .phone span {
   font-size: 2rem;
   color: #fff;
 }
-.contact .contact_wrap .address .call .email {
+.main .contact .contact_wrap .address .call .email {
   display: flex;
   gap: 2rem;
 }
-.contact .contact_wrap .address .call .email img {
+.main .contact .contact_wrap .address .call .email img {
   width: 2.2rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.contact .contact_wrap .address .call .email span {
+.main .contact .contact_wrap .address .call .email span {
   font-size: 2rem;
   color: #fff;
 }
-.contact .contact_wrap .list {
+.main .contact .contact_wrap .list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 9rem;
 }
-.contact .contact_wrap .list p {
+.main .contact .contact_wrap .list p {
   font-size: 2rem;
   line-height: 1.6;
   text-align: center;
   color: #fff;
 }
-.contact .contact_wrap .list .btn_wrap {
+.main .contact .contact_wrap .list .btn_wrap {
   display: flex;
   gap: 2rem;
 }
-.contact .contact_wrap .list .btn_wrap a {
+.main .contact .contact_wrap .list .btn_wrap a {
   font-size: 2rem;
   color: #fff;
   padding: 1rem 4rem;
   border: 0.1rem solid #fff;
   border-radius: 5rem;
 }
-.contact .copyright {
+.main .contact .copyright {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -1420,7 +1423,7 @@ body {
   transform: translateX(-50%);
   padding: 0 8rem;
 }
-.contact .copyright p {
+.main .contact .copyright p {
   font-size: 1.6rem;
   color: #fff;
 }
