@@ -108,10 +108,6 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  /* kpass */
-  /* baskinrobbins */
-  /* ZARA */
-  /* busancinemacenter */
 }
 .main .main_visual {
   width: 100%;
@@ -438,17 +434,37 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.main .kpass {
+.main .project_list {
+  /* padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory; */
+  /* &::-webkit-scrollbar {
+      display: none;
+  }
+
+  .snap {
+      scroll-snap-align: start;
+  } */
+  /* kpass */
+  /* baskinrobbins */
+  /* ZARA */
+  /* busancinemacenter */
+}
+.main .project_list .kpass {
   width: 100%;
   height: 100vh;
   display: flex;
   background: #78B1F5;
 }
-.main .kpass .left {
+.main .project_list .kpass .left {
   width: 55.72%;
   position: relative;
 }
-.main .kpass .left img {
+.main .project_list .kpass .left img {
   width: 50%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -458,21 +474,21 @@ body {
   transform: rotateY(180deg);
   opacity: 0.7;
 }
-.main .kpass .left .title_wrap {
+.main .project_list .kpass .left .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.main .kpass .left .title_wrap .title {
+.main .project_list .kpass .left .title_wrap .title {
   position: relative;
 }
-.main .kpass .left .title_wrap .title h2 {
+.main .project_list .kpass .left .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.main .kpass .left .title_wrap .title .tool_wrap {
+.main .project_list .kpass .left .title_wrap .title .tool_wrap {
   width: 13%;
   display: flex;
   gap: 1rem;
@@ -482,12 +498,12 @@ body {
   left: 15.5rem;
   z-index: 9;
 }
-.main .kpass .left .title_wrap .title .tool_wrap .icon_wrap {
+.main .project_list .kpass .left .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.main .kpass .left .title_wrap .title .tool_wrap .icon_wrap img {
+.main .project_list .kpass .left .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -497,16 +513,16 @@ body {
   display: block;
   opacity: 1;
 }
-.main .kpass .left .title_wrap p {
+.main .project_list .kpass .left .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.main .kpass .right {
+.main .project_list .kpass .right {
   width: 44.28%;
   background-color: #B4D6FF;
   position: relative;
 }
-.main .kpass .right .img_wrap {
+.main .project_list .kpass .right .img_wrap {
   width: 52.94%;
   padding-bottom: 62.57%;
   position: relative;
@@ -515,7 +531,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.main .kpass .right .img_wrap img {
+.main .project_list .kpass .right .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -523,47 +539,47 @@ body {
   top: 0;
   left: 0;
 }
-.main .kpass .right .text_wrap {
+.main .project_list .kpass .right .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.main .kpass .right .text_wrap p {
+.main .project_list .kpass .right .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.main .kpass .right .text_wrap .list_wrap {
+.main .project_list .kpass .right .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.main .kpass .right .text_wrap .list_wrap .list {
+.main .project_list .kpass .right .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.main .kpass .right .text_wrap .list_wrap .list li {
+.main .project_list .kpass .right .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.main .kpass .right .text_wrap .list_wrap .list li strong {
+.main .project_list .kpass .right .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.main .kpass .right .text_wrap .list_wrap .list li span {
+.main .project_list .kpass .right .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.main .kpass .right .text_wrap .list_wrap .qr_wrap {
+.main .project_list .kpass .right .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.main .kpass .right .text_wrap .list_wrap .qr_wrap img {
+.main .project_list .kpass .right .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -571,7 +587,7 @@ body {
   top: 0;
   left: 0;
 }
-.main .kpass .right .link_wrap {
+.main .project_list .kpass .right .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -580,7 +596,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.main .kpass .right .link_wrap a {
+.main .project_list .kpass .right .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -591,48 +607,48 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.main .kpass .right .link_wrap a:hover {
+.main .project_list .kpass .right .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.main .kpass .right .link_wrap a:first-child {
+.main .project_list .kpass .right .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.main .kpass .right .link_wrap a:first-child span {
+.main .project_list .kpass .right .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.main .kpass .right .link_wrap a:first-child img {
+.main .project_list .kpass .right .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.main .kpass .right .link_wrap a:first-child:hover span {
+.main .project_list .kpass .right .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.main .kpass .right .link_wrap a:first-child:hover img {
+.main .project_list .kpass .right .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.main .baskinrobbins {
+.main .project_list .baskinrobbins {
   width: 100%;
   height: 100vh;
   display: flex;
   overflow: hidden;
 }
-.main .baskinrobbins .left {
+.main .project_list .baskinrobbins .left {
   width: 44.28%;
   background-color: #FFE4EA;
   position: relative;
 }
-.main .baskinrobbins .left .img_wrap {
+.main .project_list .baskinrobbins .left .img_wrap {
   width: 100%;
   padding-bottom: 66.7%;
   position: relative;
@@ -640,7 +656,7 @@ body {
   top: 0;
   left: 0;
 }
-.main .baskinrobbins .left .img_wrap img {
+.main .project_list .baskinrobbins .left .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -648,48 +664,48 @@ body {
   top: 0;
   left: 0;
 }
-.main .baskinrobbins .left .text_wrap {
+.main .project_list .baskinrobbins .left .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.main .baskinrobbins .left .text_wrap p {
+.main .project_list .baskinrobbins .left .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .list {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .list li {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .list li strong {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .list li span {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .qr_wrap {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   padding-bottom: 100%;
   position: relative;
 }
-.main .baskinrobbins .left .text_wrap .list_wrap .qr_wrap img {
+.main .project_list .baskinrobbins .left .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -697,7 +713,7 @@ body {
   top: 0;
   left: 0;
 }
-.main .baskinrobbins .left .link_wrap {
+.main .project_list .baskinrobbins .left .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -706,7 +722,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.main .baskinrobbins .left .link_wrap a {
+.main .project_list .baskinrobbins .left .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -717,43 +733,43 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.main .baskinrobbins .left .link_wrap a:hover {
+.main .project_list .baskinrobbins .left .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.main .baskinrobbins .left .link_wrap a:first-child {
+.main .project_list .baskinrobbins .left .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.main .baskinrobbins .left .link_wrap a:first-child span {
+.main .project_list .baskinrobbins .left .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.main .baskinrobbins .left .link_wrap a:first-child img {
+.main .project_list .baskinrobbins .left .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.main .baskinrobbins .left .link_wrap a:first-child:hover span {
+.main .project_list .baskinrobbins .left .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.main .baskinrobbins .left .link_wrap a:first-child:hover img {
+.main .project_list .baskinrobbins .left .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.main .baskinrobbins .right {
+.main .project_list .baskinrobbins .right {
   width: 55.72%;
   position: relative;
   background: #E38C9C;
   background: linear-gradient(0deg, rgba(227, 140, 156, 0) 0%, rgb(227, 140, 156) 50%);
 }
-.main .baskinrobbins .right img {
+.main .project_list .baskinrobbins .right img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -762,21 +778,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.main .baskinrobbins .right .title_wrap {
+.main .project_list .baskinrobbins .right .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.main .baskinrobbins .right .title_wrap .title {
+.main .project_list .baskinrobbins .right .title_wrap .title {
   position: relative;
 }
-.main .baskinrobbins .right .title_wrap .title h2 {
+.main .project_list .baskinrobbins .right .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.main .baskinrobbins .right .title_wrap .title .tool_wrap {
+.main .project_list .baskinrobbins .right .title_wrap .title .tool_wrap {
   width: 17%;
   display: flex;
   gap: 1rem;
@@ -786,12 +802,12 @@ body {
   left: 27.5rem;
   z-index: 9;
 }
-.main .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap {
+.main .project_list .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.main .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap img {
+.main .project_list .baskinrobbins .right .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -800,23 +816,23 @@ body {
   left: 0;
   display: block;
 }
-.main .baskinrobbins .right .title_wrap p {
+.main .project_list .baskinrobbins .right .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.main .ZARA {
+.main .project_list .ZARA {
   width: 100%;
   height: 100vh;
   display: flex;
   overflow: hidden;
 }
-.main .ZARA .left {
+.main .project_list .ZARA .left {
   width: 55.72%;
   position: relative;
   background: #121212;
   background: linear-gradient(0deg, rgba(18, 18, 18, 0) 0%, rgb(18, 18, 18) 65%);
 }
-.main .ZARA .left img {
+.main .project_list .ZARA .left img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -825,21 +841,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.main .ZARA .left .title_wrap {
+.main .project_list .ZARA .left .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.main .ZARA .left .title_wrap .title {
+.main .project_list .ZARA .left .title_wrap .title {
   position: relative;
 }
-.main .ZARA .left .title_wrap .title h2 {
+.main .project_list .ZARA .left .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.main .ZARA .left .title_wrap .title .tool_wrap {
+.main .project_list .ZARA .left .title_wrap .title .tool_wrap {
   width: 38%;
   display: flex;
   gap: 1rem;
@@ -849,12 +865,12 @@ body {
   left: 15.5rem;
   z-index: 9;
 }
-.main .ZARA .left .title_wrap .title .tool_wrap .icon_wrap {
+.main .project_list .ZARA .left .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.main .ZARA .left .title_wrap .title .tool_wrap .icon_wrap img {
+.main .project_list .ZARA .left .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -863,15 +879,15 @@ body {
   left: 0;
   display: block;
 }
-.main .ZARA .left .title_wrap p {
+.main .project_list .ZARA .left .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
-.main .ZARA .right {
+.main .project_list .ZARA .right {
   width: 44.28%;
   position: relative;
 }
-.main .ZARA .right .img_wrap {
+.main .project_list .ZARA .right .img_wrap {
   width: 52.94%;
   padding-bottom: 62.57%;
   position: relative;
@@ -880,7 +896,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.main .ZARA .right .img_wrap img {
+.main .project_list .ZARA .right .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -888,47 +904,47 @@ body {
   top: 0;
   left: 0;
 }
-.main .ZARA .right .text_wrap {
+.main .project_list .ZARA .right .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.main .ZARA .right .text_wrap p {
+.main .project_list .ZARA .right .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.main .ZARA .right .text_wrap .list_wrap {
+.main .project_list .ZARA .right .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.main .ZARA .right .text_wrap .list_wrap .list {
+.main .project_list .ZARA .right .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.main .ZARA .right .text_wrap .list_wrap .list li {
+.main .project_list .ZARA .right .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.main .ZARA .right .text_wrap .list_wrap .list li strong {
+.main .project_list .ZARA .right .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.main .ZARA .right .text_wrap .list_wrap .list li span {
+.main .project_list .ZARA .right .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.main .ZARA .right .text_wrap .list_wrap .qr_wrap {
+.main .project_list .ZARA .right .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.main .ZARA .right .text_wrap .list_wrap .qr_wrap img {
+.main .project_list .ZARA .right .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -936,7 +952,7 @@ body {
   top: 0;
   left: 0;
 }
-.main .ZARA .right .link_wrap {
+.main .project_list .ZARA .right .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -945,7 +961,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.main .ZARA .right .link_wrap a {
+.main .project_list .ZARA .right .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -956,46 +972,46 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.main .ZARA .right .link_wrap a:hover {
+.main .project_list .ZARA .right .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.main .ZARA .right .link_wrap a:first-child {
+.main .project_list .ZARA .right .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.main .ZARA .right .link_wrap a:first-child span {
+.main .project_list .ZARA .right .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.main .ZARA .right .link_wrap a:first-child img {
+.main .project_list .ZARA .right .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.main .ZARA .right .link_wrap a:first-child:hover span {
+.main .project_list .ZARA .right .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.main .ZARA .right .link_wrap a:first-child:hover img {
+.main .project_list .ZARA .right .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.main .BusanCinemaCenter {
+.main .project_list .BusanCinemaCenter {
   width: 100%;
   height: 100vh;
   display: flex;
 }
-.main .BusanCinemaCenter .left {
+.main .project_list .BusanCinemaCenter .left {
   width: 44.28%;
   position: relative;
 }
-.main .BusanCinemaCenter .left .img_wrap {
+.main .project_list .BusanCinemaCenter .left .img_wrap {
   width: 45.88%;
   padding-bottom: 97.43%;
   position: relative;
@@ -1004,7 +1020,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-.main .BusanCinemaCenter .left .img_wrap img {
+.main .project_list .BusanCinemaCenter .left .img_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1012,47 +1028,47 @@ body {
   top: 0;
   left: 0;
 }
-.main .BusanCinemaCenter .left .text_wrap {
+.main .project_list .BusanCinemaCenter .left .text_wrap {
   width: 64.7%;
   position: absolute;
   top: 46rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.main .BusanCinemaCenter .left .text_wrap p {
+.main .project_list .BusanCinemaCenter .left .text_wrap p {
   font-size: 1.8rem;
   margin-bottom: 5rem;
   line-height: 1.4;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .list {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li {
   display: flex;
   gap: 2rem;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li strong {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li strong {
   width: 19%;
   font-size: 1.8rem;
   font-weight: 500;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .list li span {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .list li span {
   font-size: 1.8rem;
   white-space: nowrap;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap {
   width: 25.45%;
   position: relative;
 }
-.main .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap img {
+.main .project_list .BusanCinemaCenter .left .text_wrap .list_wrap .qr_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1060,7 +1076,7 @@ body {
   top: 0;
   left: 0;
 }
-.main .BusanCinemaCenter .left .link_wrap {
+.main .project_list .BusanCinemaCenter .left .link_wrap {
   width: 64.7%;
   position: absolute;
   bottom: 10rem;
@@ -1069,7 +1085,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.main .BusanCinemaCenter .left .link_wrap a {
+.main .project_list .BusanCinemaCenter .left .link_wrap a {
   width: 17rem;
   height: 5.6rem;
   font-size: 1.8rem;
@@ -1080,43 +1096,43 @@ body {
   align-items: center;
   transition: 0.3s;
 }
-.main .BusanCinemaCenter .left .link_wrap a:hover {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:hover {
   background-color: #121212;
   color: #fff;
 }
-.main .BusanCinemaCenter .left .link_wrap a:first-child {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:first-child {
   background-color: #121212;
   position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.main .BusanCinemaCenter .left .link_wrap a:first-child span {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:first-child span {
   font-size: 1.8rem;
   color: #fff;
   transform: translate(2rem);
   transition: 0.3s;
 }
-.main .BusanCinemaCenter .left .link_wrap a:first-child img {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:first-child img {
   width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
   transition: 0.3s;
 }
-.main .BusanCinemaCenter .left .link_wrap a:first-child:hover span {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:first-child:hover span {
   transform: translateX(0);
 }
-.main .BusanCinemaCenter .left .link_wrap a:first-child:hover img {
+.main .project_list .BusanCinemaCenter .left .link_wrap a:first-child:hover img {
   opacity: 1;
 }
-.main .BusanCinemaCenter .right {
+.main .project_list .BusanCinemaCenter .right {
   width: 55.72%;
   position: relative;
   background: #344161;
   background: linear-gradient(0deg, rgba(52, 65, 97, 0) 0%, rgb(52, 65, 97) 50%);
 }
-.main .BusanCinemaCenter .right img {
+.main .project_list .BusanCinemaCenter .right img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1125,21 +1141,21 @@ body {
   left: 0;
   z-index: -1;
 }
-.main .BusanCinemaCenter .right .title_wrap {
+.main .project_list .BusanCinemaCenter .right .title_wrap {
   position: absolute;
   top: 12rem;
   left: 10rem;
 }
-.main .BusanCinemaCenter .right .title_wrap .title {
+.main .project_list .BusanCinemaCenter .right .title_wrap .title {
   position: relative;
 }
-.main .BusanCinemaCenter .right .title_wrap .title h2 {
+.main .project_list .BusanCinemaCenter .right .title_wrap .title h2 {
   font-size: 5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 2rem;
 }
-.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap {
+.main .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap {
   width: 17%;
   display: flex;
   gap: 1rem;
@@ -1149,12 +1165,12 @@ body {
   left: 24.5rem;
   z-index: 9;
 }
-.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap {
+.main .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap {
   width: 100%;
   padding-bottom: 100%;
   position: relative;
 }
-.main .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap img {
+.main .project_list .BusanCinemaCenter .right .title_wrap .title .tool_wrap .icon_wrap img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1163,19 +1179,19 @@ body {
   left: 0;
   display: block;
 }
-.main .BusanCinemaCenter .right .title_wrap p {
+.main .project_list .BusanCinemaCenter .right .title_wrap p {
   font-size: 2.4rem;
   color: #fff;
 }
 .main .clone_coding {
   width: 100%;
-  height: 100vh;
+  margin: 15rem auto 20rem;
 }
 .main .clone_coding h2 {
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
-  margin: 15rem auto 10rem;
+  margin-bottom: 10rem;
 }
 .main .clone_coding .list {
   display: flex;
@@ -1271,14 +1287,13 @@ body {
 }
 .main .graphic_design {
   max-width: 180rem;
-  height: 100vh;
-  margin: 0 auto;
+  margin: 10rem auto 25rem;
 }
 .main .graphic_design h2 {
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
-  margin: 25rem 2rem 12rem;
+  margin-bottom: 12rem;
 }
 .main .graphic_design .graphicSwiper {
   overflow: visible;
@@ -1290,12 +1305,31 @@ body {
 .main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap {
   width: 100%;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1882352941);
+  overflow-y: hidden;
 }
-.main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap img {
+.main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap a {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .img_wrap a img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1882352941);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main .graphic_design .graphicSwiper .swiper-wrapper .img5 .img_wrap {
+  box-shadow: none;
+}
+.main .graphic_design .graphicSwiper .swiper-wrapper .img5 .img_wrap a img {
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .main .contact {
   width: 100%;

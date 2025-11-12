@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="css/main.scss">
     <link rel="stylesheet" href="css/main.css">
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.181.1/examples/jsm/"
+            }
+        }   
+    </script>
 
     <script src="lib/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main.js"></script>
@@ -68,199 +76,6 @@
                 normalizeScroll: true
             }); */
 
-            const SWIPE_THRESHOLD = 30;
-            const mainSections = Array.from(document.querySelectorAll('.snap'));
-            const lastSection = mainSections[mainSections.length - 1];
-            let touchStartY = 0;
-            let lastTouchY = 0;
-            let touchDirection = 0;
-            let isSnapping = false;
-            let currentSnapTween = null;
-            let snapTweenStartTime = null;
-            let currentTargetIndex = -1;
-            let snapperActive = true;
-
-            function isMobileDevice() {
-                return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            }
-
-            function setViewportHeight() {
-                const vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', vh + 'px');
-                ScrollTrigger.refresh();
-                if (isSnapping && currentTargetIndex >= 0) touchSnapToTarget(currentTargetIndex);
-            }
-
-            function touchSnapToTarget(targetIndex) {
-                const panelTops = mainSections.map(section => section.offsetTop);
-                if (targetIndex == null) {
-                    const scroll = Math.round(window.scrollY);
-                    let currentIndex = panelTops.findIndex(top => scroll < top);
-                    if (currentIndex == -1) {
-                        currentIndex = panelTops.length;
-                        if (touchDirection > 0 || scroll > lastSection.offsetTop + lastSection.offsetHeight) {
-                            return;
-                        }
-                    }
-
-                    currentIndex--;
-                    targetIndex = Math.min(Math.max(currentIndex + touchDirection, 0), panelTops.length - 1);
-                }
-
-                currentTargetIndex = targetIndex;
-                const target = panelTops[currentTargetIndex];
-                if (target !== scroll) {
-                    snapTo(target, 0.4, 0, true);
-                }
-            }
-
-            function snapTo(targetY, duration, resetDelay, blockOverflow = false, pauseScrollTrigger = false) {
-                if (currentSnapTween?.isActive()) {
-                    currentSnapTween.kill();
-                    duration = Math.max(0, duration - (Date.now() - snapTweenStartTime) / 1000);
-                }
-
-                isSnapping = true;
-                const isForward = targetY > window.scrollY;
-                if (blockOverflow) {
-                    document.body.style.overflow = 'hidden';
-                    setTimeout(() => {
-                        document.body.style.overflow = '';
-                    }, duration / 2);
-                }
-
-                if (pauseScrollTrigger) ScrollTrigger.disable();
-                snapTweenStartTime = Date.now();
-                currentSnapTween = gsap.to(window, {
-                    scrollTo: targetY,
-                    duration: duration,
-                    ease: 'power2.out',
-                    onComplete: () => {
-                        if (pauseScrollTrigger) {
-                            ScrollTrigger.enable();
-                        }
-
-                        setTimeout(() => {
-                            isSnapping = false;
-                        }, resetDelay * 1000);
-                    }
-                });
-            }
-
-            if (isMobileDevice()) {
-                setViewportHeight();
-                window.addEventListener('resize', setViewportHeight);
-                window.addEventListener('orientationchange', setViewportHeight);
-            }
-
-            window.addEventListener('touchstart', (e) => {
-                if (isSnapping) {
-                    if (e.cancelable) e.preventDefault();
-                    return;
-                }
-                touchStartY = lastTouchY = e.touches[0].clientY;
-                touchDirection = 0;
-            }, { passive: false });
-
-            window.addEventListener('touchmove', (e) => {
-                const currentY = e.touches[0].clientY;
-                const delta = lastTouchY - currentY;
-                if (Math.abs(delta) > 5) {
-                    touchDirection = delta > 0 ? 1 : 0;
-                }
-
-                lastTouchY = currentY;
-                if (isSnapping && e.cancelable) e.preventDefault();
-            }, { passive: false });
-
-            window.addEventListener('touchend', (e) => {
-                if (isSnapping) {
-                    if (e.cancelable) e.preventDefault();
-                    return;
-                }
-
-                const deltaY = touchStartY - e.changedTouches[0].clientY;
-                if (Math.abs(deltaY) < SWIPE_THRESHOLD) return;
-                touchSnapToTarget();
-            }, { passive: false });
-
-            window.addEventListener('keydown', (e) => {
-                if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(e.key)) {
-                    const panelTops = mainSections.map(section => section.offsetTop);
-                    const scroll = Math.round(window.scrollY);
-                    const direction = e.key === 'ArrowDown' || e.key === 'PageDown' ? 1 :
-                        e.key === 'ArrowUp' || e.key === 'PageUp' ? -1 :
-                            e.key === 'Home' ? -Infinity :
-                                e.key === 'End' ? Infinity : 0;
-                    let currentIndex = panelTops.findIndex(top => scroll + (direction > 0 ? 0 : -1) < top);
-                    if (currentIndex === -1) {
-                        snapperActive = false;
-                        return;
-                    }
-
-                    e.preventDefault();
-                    let targetIndex;
-                    if (!snapperActive) {
-                        snapperActive = true;
-                        targetIndex = currentIndex;
-                    }
-
-                    else {
-                        if (direction > 0) {
-                            currentIndex--;
-                        }
-
-                        if (direction === Infinity) {
-                            targetIndex = panelTops.length - 1;
-                        } else if (direction === -Infinity) {
-                            targetIndex = 0;
-                        } else {
-                            targetIndex = Math.min(Math.max(currentIndex + direction, 0), panelTops.length - 1);
-                        }
-                    }
-
-                    snapTo(panelTops[targetIndex], 0.8, 0);
-                }
-            }, { passive: false });
-
-            window.addEventListener('wheel', (e) => {
-                if (isSnapping) {
-                    e.preventDefault();
-                    return;
-                }
-
-                const scroll = Math.round(window.scrollY);
-                const direction = e.deltaY > 0 ? 1 : -1;
-                const panelTops = mainSections.map(section => section.offsetTop);
-                let currentIndex = panelTops.findIndex(top => scroll + (direction > 0 ? 0 : -1) < top);
-                if (currentIndex == -1) {
-                    currentIndex = panelTops.length;
-                    if (direction > 0 || scroll > lastSection.offsetTop) {
-                        snapperActive = false;
-                        return;
-                    }
-                }
-
-                e.preventDefault();
-                let targetIndex;
-                if (!snapperActive) {
-                    snapperActive = true;
-                    targetIndex = currentIndex
-                }
-
-                else {
-                    if (direction > 0) {
-                        currentIndex--;
-                    }
-                    targetIndex = Math.min(Math.max(currentIndex + direction, 0), panelTops.length - 1);
-                }
-
-                const target = panelTops[targetIndex];
-                if (target !== scroll) {
-                    snapTo(target, 0.8, 0.4);
-                }
-            }, { passive: false });
-
 
 
             gsap
@@ -311,6 +126,8 @@
                     0
                 );
 
+
+
             var swiper = new Swiper(".skillsSwiper", {
                 slidesPerView: 8,
                 spaceBetween: 150,
@@ -322,7 +139,7 @@
                 },
             });
 
-            var swiper = new Swiper(".graphicSwiper", {
+            var swiper1 = new Swiper(".graphicSwiper", {
                 slidesPerView: 4,
                 spaceBetween: 100,
                 loop: true,
@@ -336,7 +153,19 @@
 
 
             Fancybox.bind("[data-fancybox]", {
-                // Your custom options
+                on: {
+                    ready: (fancybox, slide) => {
+                        swiper1.autoplay.stop();
+                        swiper1.setTranslate(swiper1.getTranslate()); // 현재 위치 고정
+                    },
+                    destroy: (fancybox, slide) => {
+                        setTimeout(() => {
+                            swiper1.slideNext();
+                            swiper1.autoplay.start();
+                        }, 150);
+                    },
+                },
+
             });
 
         });
@@ -380,12 +209,12 @@
 
         <main class="main">
 
-            <section class="main_visual snap">
+            <section class="main_visual">
                 <h2>사용자의 흥미에서 출발해,<br />
                     문제를 해결하는 디자인으로 완성합니다.</h2>
             </section><!-- .main_visual end -->
 
-            <section class="about snap" id="ABOUT">
+            <section class="about" id="ABOUT">
                 <h2>ABOUT</h2>
                 <div class="info_wrap">
                     <div class="info">
@@ -512,7 +341,7 @@
                 </div><!-- .skills end -->
             </section><!-- .about end -->
 
-            <section class="project snap" id="PROJECT">
+            <section class="project" id="PROJECT">
                 <div class="project_intro">
                     <h2 class="heading">PROJECT</h2>
                     <div class="zoom_item" data-layer="2">
@@ -554,273 +383,270 @@
                 </div><!-- .project_intro end -->
             </section><!-- .project end -->
 
-            <section class="kpass snap" id="ADAPTIVE">
-                <div class="left">
-                    <img src="img/kpass_bg.png" alt="k패스배경이미지">
-                    <div class="title_wrap">
-                        <div class="title">
-                            <h2>K-패스</h2>
-                            <div class="tool_wrap">
-                                <div class="icon_wrap">
-                                    <img src="img/icon_Figma.svg" alt="icon_Figma">
-                                </div><!-- .icon_wrap end -->
-                                <div class="icon_wrap">
-                                    <img src="img/icon_VSCode.svg" alt="icon_VSCode">
-                                </div><!-- .icon_wrap end -->
-                            </div><!-- .tool_wrap end -->
-                        </div><!-- .title end -->
-                        <p>K패스 카드로 대중교통을 이용하면 이용요금의 일정비율만큼 환급됩니다!</p>
-                    </div><!-- .title_wrap end -->
-                </div><!-- .left end -->
-                <div class="right">
-                    <div class="img_wrap">
-                        <img src="img/mockup_kpass.png" alt="mockup_kpass">
-                    </div><!-- .img_wrap end -->
-                    <div class="text_wrap">
-                        <p>대중교통 이용요금의 일정비율을 환급해주는 사업인 k-패스 홈페이지 리뉴얼입니다. 다양한 사용자들이 이용하는 홈페이지인 만큼 쉽고 간단하게 절차를 이해할
-                            수 있도록 폰트와 이미지 크기를 고려하여 제작하였습니다.</p>
-                        <div class="list_wrap">
-                            <ul class="list">
-                                <li>
-                                    <strong>프로젝트</strong>
-                                    <span>적응형 홈페이지 리뉴얼</span>
-                                </li>
-                                <li>
-                                    <strong>제작범위</strong>
-                                    <span>메인페이지, 지역별혜택소개</span>
-                                </li>
-                                <li>
-                                    <strong>기여도</strong>
-                                    <span>기획, 디자인, 퍼블리싱 100%</span>
-                                </li>
-                                <li>
-                                    <strong>사용언어</strong>
-                                    <span>html, scss, javascript, jquery</span>
-                                </li>
-                                <li>
-                                    <strong>라이브러리</strong>
-                                    <span>swiper-js, aos</span>
-                                </li>
-                            </ul><!-- .list end -->
-                            <div class="qr_wrap">
-                                <img src="img/" alt="">
-                            </div><!-- .qr_wrap end -->
-                        </div><!-- .list_wrap end -->
-                    </div><!-- .text_wrap end -->
-                    <div class="link_wrap">
-                        <a href="https://choihyunjeong.github.io/K-PASS/" target="_blank">
-                            <span>WEBSITE</span>
-                            <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
-                        </a>
-                        <a href="https://www.figma.com/proto/hrLTw74kB0yHGVN4xiQC3S/K-%ED%8C%A8%EC%8A%A4?node-id=426-35&t=wbf89psG2bTHgVuu-0&scaling=min-zoom&content-scaling=fixed&page-id=375%3A516"
-                            target="_blank">PROCESS</a>
-                        <a href="https://www.figma.com/design/hrLTw74kB0yHGVN4xiQC3S/K-%ED%8C%A8%EC%8A%A4?node-id=0-1&p=f&t=eKi6vLteWoRF4PyE-0"
-                            target="_blank">FIGMA</a>
-                    </div><!-- .link_wrap end -->
-                </div><!-- .right end -->
-            </section><!-- .kpass end -->
+            <section class="project_list">
+                <div class="kpass snap" id="ADAPTIVE">
+                    <div class="left">
+                        <img src="img/kpass_bg.png" alt="k패스배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>K-패스</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_Figma.svg" alt="icon_Figma">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_VSCode.svg" alt="icon_VSCode">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>K패스 카드로 대중교통을 이용하면 이용요금의 일정비율만큼 환급됩니다!</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <div class="img_wrap">
+                            <img src="img/mockup_kpass.png" alt="mockup_kpass">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>대중교통 이용요금의 일정비율을 환급해주는 사업인 k-패스 홈페이지 리뉴얼입니다. 다양한 사용자들이 이용하는 홈페이지인 만큼 쉽고 간단하게 절차를 이해할
+                                수 있도록 폰트와 이미지 크기를 고려하여 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>적응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 지역별혜택소개</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, scss, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, aos</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="img/" alt="">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/K-PASS/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
+                            </a>
+                            <a href="https://www.figma.com/proto/hrLTw74kB0yHGVN4xiQC3S/K-%ED%8C%A8%EC%8A%A4?node-id=426-35&t=97rNXw1HBqQHHuk9-0&scaling=min-zoom&content-scaling=fixed&page-id=375%3A516"
+                                target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/hrLTw74kB0yHGVN4xiQC3S/K-%ED%8C%A8%EC%8A%A4?node-id=0-1&p=f&t=eKi6vLteWoRF4PyE-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .kpass end -->
+                <div class="baskinrobbins snap" id="REPONSIVE">
+                    <div class="left">
+                        <div class="img_wrap">
+                            <img src="img/mockup_baskinrobbins.png" alt="mockup_baskinrobbins">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>다국적 아이스크림 브랜드 배스킨라빈스 홈페이지 리디자인입니다. mz세대들의 흥미를 끌고 기존 고객들의 불편사항들을 고려하여 인터랙티브한 요소들을 사용하고
+                                폰트 가독성 등을 고려하여 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>반응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, gsap</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="img/qr_baskinrobbins.svg" alt="qr_baskinrobbins">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/baskinrobbins/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
+                            </a>
+                            <a href="https://www.figma.com/proto/k5bTlhvC8JOdEwTya95bAG/%EB%B0%B0%EC%8A%A4%ED%82%A8%EB%9D%BC%EB%B9%88%EC%8A%A4?node-id=1349-3646&t=QATDanS6UvzeL80n-0&scaling=min-zoom&content-scaling=fixed&page-id=1349%3A3645"
+                                target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/k5bTlhvC8JOdEwTya95bAG/%EB%B0%B0%EC%8A%A4%ED%82%A8%EB%9D%BC%EB%B9%88%EC%8A%A4?node-id=0-1&p=f&t=Y65XtG3uSTbesCsu-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <img src="img/baskinrobbins_bg.jpg" alt="배스킨배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>배스킨라빈스</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_Figma.svg" alt="icon_Figma">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_VSCode.svg" alt="icon_VSCode">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>31가지 맛으로 표현하는 행복, 맛으로 나누는 유쾌한 순간</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .baskinrobbins end -->
+                <div class="ZARA snap">
+                    <div class="left">
+                        <img src="img/zara_bg.jpg" alt="자라배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>ZARA</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_Figma.svg" alt="icon_Figma">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_VSCode.svg" alt="icon_VSCode">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>Creatives for 50 Years</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <div class="img_wrap">
+                            <img src="img/mockup_zara.png" alt="mockup_zara">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>스페인에 본사를 둔, 세계적인 패션 유통업체 인디텍스 그룹의 대표 브랜드인 자라 홈페이지 리디자인입니다. 비주얼적인 비율이 높은 홈페이지를 사용자의
+                                편의성을 고려해서 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>적응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 서브페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, fullpage</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="img/" alt="">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/zara/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
+                            </a>
+                            <a href="https://www.figma.com/proto/urg94orZZhnXXERElyswo6/%ED%94%BC%ED%94%BC%ED%8B%B0?node-id=440-554&t=fyZEcBbk7GuWNdgC-0&scaling=contain&content-scaling=fixed&page-id=440%3A553"
+                                target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/Cs0pPpK9yumXw67qwhOzkY/ZARA-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8?node-id=83-1048&p=f&t=DOS6yyd4VehNvydc-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .zara end -->
+                <div class="BusanCinemaCenter snap" id="MOBILE">
+                    <div class="left">
+                        <div class="img_wrap">
+                            <img src="img/mockup_BusanCinemaCenter.png" alt="mockup_BusanCinemaCenter">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>영화, 공연, 전시, 교육 등을 아우르는 복합문화공간인 영화의 전당 모바일 앱 리디자인입니다. 다양한 연령대가 이용하는 어플인 점을 고려하여 폰트의
+                                가독성과 이용이 간편하도록 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>모바일 어플 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 서브페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="img/qr_BusanCinemaCenter.svg" alt="qr_BusanCinemaCenter">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/busan_cinema_center/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
+                            </a>
+                            <a href="https://www.figma.com/proto/urg94orZZhnXXERElyswo6/%ED%94%BC%ED%94%BC%ED%8B%B0?node-id=440-15&t=fyZEcBbk7GuWNdgC-0&scaling=contain&content-scaling=fixed&page-id=440%3A14"
+                                target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/WrkFfA2eJBhi9obyZnfn5H/%EC%98%81%ED%99%94%EC%9D%98-%EC%A0%84%EB%8B%B9?node-id=22-25&p=f&t=lzeodclXDkyRZzH0-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <img src="img/cinemacenter_bg.jpg" alt="영화의전당배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>영화의 전당</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_Figma.svg" alt="icon_Figma">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="img/icon_VSCode.svg" alt="icon_VSCode">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>시민을 위한, 시민과 함께하는, 모두가 행복한 영화의 전당</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .BusanCinemaCenter end -->
+            </section><!-- .project_list end -->
 
-            <section class="baskinrobbins snap" id="REPONSIVE">
-                <div class="left">
-                    <div class="img_wrap">
-                        <img src="img/mockup_baskinrobbins.png" alt="mockup_baskinrobbins">
-                    </div><!-- .img_wrap end -->
-                    <div class="text_wrap">
-                        <p>다국적 아이스크림 브랜드 배스킨라빈스 홈페이지 리디자인입니다. mz세대들의 흥미를 끌고 기존 고객들의 불편사항들을 고려하여 인터랙티브한 요소들을 사용하고
-                            폰트 가독성 등을 고려하여 제작하였습니다.</p>
-                        <div class="list_wrap">
-                            <ul class="list">
-                                <li>
-                                    <strong>프로젝트</strong>
-                                    <span>반응형 홈페이지 리뉴얼</span>
-                                </li>
-                                <li>
-                                    <strong>제작범위</strong>
-                                    <span>메인페이지</span>
-                                </li>
-                                <li>
-                                    <strong>기여도</strong>
-                                    <span>기획, 디자인, 퍼블리싱 100%</span>
-                                </li>
-                                <li>
-                                    <strong>사용언어</strong>
-                                    <span>html, css, javascript, jquery</span>
-                                </li>
-                                <li>
-                                    <strong>라이브러리</strong>
-                                    <span>swiper-js, gsap</span>
-                                </li>
-                            </ul><!-- .list end -->
-                            <div class="qr_wrap">
-                                <img src="img/qr_baskinrobbins.svg" alt="qr_baskinrobbins">
-                            </div><!-- .qr_wrap end -->
-                        </div><!-- .list_wrap end -->
-                    </div><!-- .text_wrap end -->
-                    <div class="link_wrap">
-                        <a href="https://choihyunjeong.github.io/baskinrobbins/" target="_blank">
-                            <span>WEBSITE</span>
-                            <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
-                        </a>
-                        <a href="https://www.figma.com/proto/k5bTlhvC8JOdEwTya95bAG/%EB%B0%B0%EC%8A%A4%ED%82%A8%EB%9D%BC%EB%B9%88%EC%8A%A4?node-id=1349-3646&t=QATDanS6UvzeL80n-0&scaling=min-zoom&content-scaling=fixed&page-id=1349%3A3645"
-                            target="_blank">PROCESS</a>
-                        <a href="https://www.figma.com/design/k5bTlhvC8JOdEwTya95bAG/%EB%B0%B0%EC%8A%A4%ED%82%A8%EB%9D%BC%EB%B9%88%EC%8A%A4?node-id=0-1&p=f&t=Y65XtG3uSTbesCsu-0"
-                            target="_blank">FIGMA</a>
-                    </div><!-- .link_wrap end -->
-                </div><!-- .left end -->
-
-                <div class="right">
-                    <img src="img/baskinrobbins_bg.jpg" alt="배스킨배경이미지">
-                    <div class="title_wrap">
-                        <div class="title">
-                            <h2>배스킨라빈스</h2>
-                            <div class="tool_wrap">
-                                <div class="icon_wrap">
-                                    <img src="img/icon_Figma.svg" alt="icon_Figma">
-                                </div><!-- .icon_wrap end -->
-                                <div class="icon_wrap">
-                                    <img src="img/icon_VSCode.svg" alt="icon_VSCode">
-                                </div><!-- .icon_wrap end -->
-                            </div><!-- .tool_wrap end -->
-                        </div><!-- .title end -->
-                        <p>31가지 맛으로 표현하는 행복, 맛으로 나누는 유쾌한 순간</p>
-                    </div><!-- .title_wrap end -->
-                </div><!-- .right end -->
-            </section><!-- .baskinrobbins end -->
-
-            <section class="ZARA snap">
-                <div class="left">
-                    <img src="img/zara_bg.jpg" alt="자라배경이미지">
-                    <div class="title_wrap">
-                        <div class="title">
-                            <h2>ZARA</h2>
-                            <div class="tool_wrap">
-                                <div class="icon_wrap">
-                                    <img src="img/icon_Figma.svg" alt="icon_Figma">
-                                </div><!-- .icon_wrap end -->
-                                <div class="icon_wrap">
-                                    <img src="img/icon_VSCode.svg" alt="icon_VSCode">
-                                </div><!-- .icon_wrap end -->
-                            </div><!-- .tool_wrap end -->
-                        </div><!-- .title end -->
-                        <p>Creatives for 50 Years</p>
-                    </div><!-- .title_wrap end -->
-                </div><!-- .left end -->
-                <div class="right">
-                    <div class="img_wrap">
-                        <img src="img/mockup_zara.png" alt="mockup_zara">
-                    </div><!-- .img_wrap end -->
-                    <div class="text_wrap">
-                        <p>스페인에 본사를 둔, 세계적인 패션 유통업체 인디텍스 그룹의 대표 브랜드인 자라 홈페이지 리디자인입니다. 비주얼적인 비율이 높은 홈페이지를 사용자의
-                            편의성을 고려해서 제작하였습니다.</p>
-                        <div class="list_wrap">
-                            <ul class="list">
-                                <li>
-                                    <strong>프로젝트</strong>
-                                    <span>적응형 홈페이지 리뉴얼</span>
-                                </li>
-                                <li>
-                                    <strong>제작범위</strong>
-                                    <span>메인페이지, 서브페이지</span>
-                                </li>
-                                <li>
-                                    <strong>기여도</strong>
-                                    <span>기획, 디자인, 퍼블리싱 100%</span>
-                                </li>
-                                <li>
-                                    <strong>사용언어</strong>
-                                    <span>html, css, javascript</span>
-                                </li>
-                                <li>
-                                    <strong>라이브러리</strong>
-                                    <span>swiper-js, fullpage</span>
-                                </li>
-                            </ul><!-- .list end -->
-                            <div class="qr_wrap">
-                                <img src="img/" alt="">
-                            </div><!-- .qr_wrap end -->
-                        </div><!-- .list_wrap end -->
-                    </div><!-- .text_wrap end -->
-                    <div class="link_wrap">
-                        <a href="https://choihyunjeong.github.io/zara/" target="_blank">
-                            <span>WEBSITE</span>
-                            <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
-                        </a>
-                        <a href="https://www.figma.com/proto/urg94orZZhnXXERElyswo6/%ED%94%BC%ED%94%BC%ED%8B%B0?node-id=440-554&t=fyZEcBbk7GuWNdgC-0&scaling=contain&content-scaling=fixed&page-id=440%3A553"
-                            target="_blank">PROCESS</a>
-                        <a href="https://www.figma.com/design/Cs0pPpK9yumXw67qwhOzkY/ZARA-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8?node-id=83-1048&p=f&t=DOS6yyd4VehNvydc-0"
-                            target="_blank">FIGMA</a>
-                    </div><!-- .link_wrap end -->
-                </div><!-- .right end -->
-            </section><!-- .zara end -->
-
-            <section class="BusanCinemaCenter snap" id="MOBILE">
-                <div class="left">
-                    <div class="img_wrap">
-                        <img src="img/mockup_BusanCinemaCenter.png" alt="mockup_BusanCinemaCenter">
-                    </div><!-- .img_wrap end -->
-                    <div class="text_wrap">
-                        <p>영화, 공연, 전시, 교육 등을 아우르는 복합문화공간인 영화의 전당 모바일 앱 리디자인입니다. 다양한 연령대가 이용하는 어플인 점을 고려하여 폰트의
-                            가독성과 이용이 간편하도록 제작하였습니다.</p>
-                        <div class="list_wrap">
-                            <ul class="list">
-                                <li>
-                                    <strong>프로젝트</strong>
-                                    <span>모바일 어플 리뉴얼</span>
-                                </li>
-                                <li>
-                                    <strong>제작범위</strong>
-                                    <span>메인페이지, 서브페이지</span>
-                                </li>
-                                <li>
-                                    <strong>기여도</strong>
-                                    <span>기획, 디자인, 퍼블리싱 100%</span>
-                                </li>
-                                <li>
-                                    <strong>사용언어</strong>
-                                    <span>html, css, javascript, jquery</span>
-                                </li>
-                                <li>
-                                    <strong>라이브러리</strong>
-                                    <span>swiper-js</span>
-                                </li>
-                            </ul><!-- .list end -->
-                            <div class="qr_wrap">
-                                <img src="img/qr_BusanCinemaCenter.svg" alt="qr_BusanCinemaCenter">
-                            </div><!-- .qr_wrap end -->
-                        </div><!-- .list_wrap end -->
-                    </div><!-- .text_wrap end -->
-                    <div class="link_wrap">
-                        <a href="https://choihyunjeong.github.io/busan_cinema_center/" target="_blank">
-                            <span>WEBSITE</span>
-                            <img src="img/icon_arrow_right.svg" alt="icon_arrow_right">
-                        </a>
-                        <a href="https://www.figma.com/proto/urg94orZZhnXXERElyswo6/%ED%94%BC%ED%94%BC%ED%8B%B0?node-id=440-15&t=fyZEcBbk7GuWNdgC-0&scaling=contain&content-scaling=fixed&page-id=440%3A14"
-                            target="_blank">PROCESS</a>
-                        <a href="https://www.figma.com/design/WrkFfA2eJBhi9obyZnfn5H/%EC%98%81%ED%99%94%EC%9D%98-%EC%A0%84%EB%8B%B9?node-id=22-25&p=f&t=lzeodclXDkyRZzH0-0"
-                            target="_blank">FIGMA</a>
-                    </div><!-- .link_wrap end -->
-                </div><!-- .left end -->
-
-                <div class="right">
-                    <img src="img/cinemacenter_bg.jpg" alt="영화의전당배경이미지">
-                    <div class="title_wrap">
-                        <div class="title">
-                            <h2>영화의 전당</h2>
-                            <div class="tool_wrap">
-                                <div class="icon_wrap">
-                                    <img src="img/icon_Figma.svg" alt="icon_Figma">
-                                </div><!-- .icon_wrap end -->
-                                <div class="icon_wrap">
-                                    <img src="img/icon_VSCode.svg" alt="icon_VSCode">
-                                </div><!-- .icon_wrap end -->
-                            </div><!-- .tool_wrap end -->
-                        </div><!-- .title end -->
-                        <p>시민을 위한, 시민과 함께하는, 모두가 행복한 영화의 전당</p>
-                    </div><!-- .title_wrap end -->
-                </div><!-- .right end -->
-            </section><!-- .BusanCinemaCenter end -->
-
-            <section class="clone_coding snap" id="CLONE">
+            <section class="clone_coding" id="CLONE">
                 <h2>CLONE CODING</h2>
                 <div class="list">
                     <div class="item">
@@ -941,7 +767,7 @@
                 </div><!-- .list end -->
             </section><!-- .clone_coding end -->
 
-            <section class="graphic_design snap" id="GRAPHIC">
+            <section class="graphic_design" id="GRAPHIC">
                 <h2>GRAPHIC DESIGN</h2>
                 <div class="swiper graphicSwiper">
                     <div class="swiper-wrapper">
@@ -974,10 +800,10 @@
                                 </a>
                             </div><!-- .img_wrap end -->
                         </div><!-- .swiper-slide end -->
-                        <div class="swiper-slide">
+                        <div class="swiper-slide img5">
                             <div class="img_wrap">
-                                <a href="img/graphic_img1.jpg" data-fancybox="gallery">
-                                    <img src="img/graphic_img1.jpg" alt="애견펜션포스터" />
+                                <a href="img/graphic_img5.jpg" data-fancybox="gallery">
+                                    <img src="img/graphic_img5.jpg" alt="상세페이지" />
                                 </a>
                             </div><!-- .img_wrap end -->
                         </div><!-- .swiper-slide end -->
@@ -986,7 +812,7 @@
                 </div><!-- .swiper.graphicSwiper -->
             </section><!-- .graphic_design end -->
 
-            <section class="contact snap" id="CONTACT">
+            <section class="contact" id="CONTACT">
                 <ul class="contact_header">
                     <li><a href="#PROJECT">PROJECT</a></li>
                     <li><a href="index.html">
@@ -1030,7 +856,7 @@
 
         <div id="container3D"></div>
     </div><!-- #wrap end -->
-
+    
 </body>
 
 

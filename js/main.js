@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from '/three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from '/three/examples/jsm/loaders/GLTFLoader.js';
 
+
 const camera = new THREE.PerspectiveCamera(
     60,
     window.innerWidth / window.innerHeight,
@@ -50,3 +51,36 @@ const reRender3D = () => {
 reRender3D();
 
 //const controls = new OrbitControls( camera, renderer.domElement );
+
+const raycaster = new THREE.Raycaster();
+
+renderer.domElement.addEventListener('mousemove', onMouseMove)
+
+function onMouseMove(e){
+    const mouse = {
+        x : (e.clientX / renderer.domElement.clientWidth) * 2 - 1,
+        y : (e.clientY / renderer.domElement.clientHeight) * 2 + 1,
+    }
+
+    raycaster.setFromCamera(mouse, camera)
+    const intersects = raycaster.intersectObjects(scene.children, true);
+
+    if(intersects.length > 0){
+        console.log('마우스인')
+        
+        TweenMax.to(desktop.scale, 1, {
+            x : 1.5,
+            y : 1.5,
+            z : 1.5
+        })
+    } else {
+        console.log('마우스아웃')
+
+        
+        TweenMax.to(desktop.scale, 1, {
+            x : 1,
+            y : 1,
+            z : 1
+        })
+    }
+}
