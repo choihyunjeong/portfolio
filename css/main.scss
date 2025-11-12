@@ -1731,6 +1731,11 @@ body {
                         padding: 1rem 4rem;
                         border: 0.1rem solid #fff;
                         border-radius: 5rem;
+                        transition: 0.3s;
+                        &:hover {
+                            background-color: #fff;
+                            color: #121212;
+                        }
                     }
                 }
             }
