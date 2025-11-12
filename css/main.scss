@@ -100,12 +100,12 @@ body {
     .main_visual {
         width: 100%;
         height: 100vh;
-        /* background-color: #121212; */
-        display: flex;
-        justify-content: flex-start;
-        background: url(../img/mainvisual.png) center center / cover no-repeat;
         position: relative;
-
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         h2 {
             font-family: 'exqt';
             font-size: 5rem;

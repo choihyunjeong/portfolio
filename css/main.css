@@ -71,11 +71,13 @@ body {
 .main .main_visual {
   width: 100%;
   height: 100vh;
-  /* background-color: #121212; */
-  display: flex;
-  justify-content: flex-start;
-  background: url(../img/mainvisual.png) center center/cover no-repeat;
   position: relative;
+}
+.main .main_visual img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .main .main_visual h2 {
   font-family: "exqt";
