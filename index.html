@@ -26,13 +26,10 @@
 
             let project = document.querySelector('.project');
             let projectTop = project.offsetTop;
-            let projectHeight = project.clientHeight;
             let windowHeight = window.innerHeight;
             let mainVisual = document.querySelector('.main_visual');
-            let mainVisualHeight = mainVisual.clientHeight;
             let contact = document.querySelector('.contact');
             let contactTop = contact.offsetTop;
-            let aboutHeight = document.querySelector('.about').clientHeight;
             let projectListTop = document.querySelector('.project_list').offsetTop
 
 
@@ -67,7 +64,25 @@
                 normalizeScroll: true
             }); */
 
-
+            gsap
+                .timeline({
+                    scrollTrigger: {
+                        trigger : ".about",
+                        start : "top top",
+                        end : "+=100%",
+                        pin : true,
+                        scrub : 1
+                    }
+                })
+                .to(
+                    ".about",
+                    {
+                        backgroundColor : '#121212',
+                        z : 30,
+                        ease: "power1.inOut"
+                    },
+                    3
+                );
 
             gsap
                 .timeline({
@@ -112,6 +127,16 @@
                     {
                         opacity: 1,
                         z: 80,
+                        ease: "power1.inOut",
+                        color : '#121212'
+                    },
+                    0
+                )
+                .to(
+                    ".project_intro",
+                    {
+                        backgroundColor : '#78B1F5',
+                        z : 50,
                         ease: "power1.inOut"
                     },
                     0
