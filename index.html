@@ -79,9 +79,36 @@
                     {
                         backgroundColor : '#121212',
                         z : 30,
-                        ease: "power1.inOut"
+                        //ease: "power1.inOut"
                     },
                     3
+                )
+                .to(
+                    ".profile_img",
+                    {
+                        display : "none",
+                        z : 20,
+                        ease: "power1.inOut"
+                    },
+                    2.5
+                )
+                .to(
+                    "span",
+                    {
+                        color : "#121212",
+                        z : 20,
+                        ease: "power1.inOut"
+                    },
+                    2.5
+                )
+                .to(
+                    "swiper",
+                    {
+                        display : "none",
+                        z : 20,
+                        ease: "power1.inOut"
+                    },
+                    2.5
                 );
 
             gsap
@@ -220,7 +247,7 @@
                     <div class="info">
                         <div class="about_img">
                             <div class="img_wrap">
-                                <img src="img/profile_img.jpg" alt="profile_img">
+                                <img src="img/profile_img.jpg" alt="profile_img" class="profile_img">
                             </div><!-- .img_wrap end -->
                             <div class="btn_wrap">
                                 <a href="#" class="pdf_btn">
