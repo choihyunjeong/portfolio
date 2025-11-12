@@ -36,25 +36,24 @@
             window.addEventListener('scroll', () => {
                 let scrollTop = window.scrollY;
                 //console.log(contactTop);
-                if (scrollTop > projectTop && scrollTop < projectListTop + 500)  {
+                if (scrollTop > projectTop && scrollTop < projectListTop + 500) {
                     headerNormal.classList.add('light');
                 } else {
                     headerNormal.classList.remove('light');
                 }
 
-                
+
                 if (scrollTop > 9800) {
                     headerNormal.classList.add('active');
-                    
+
                 } else {
                     headerNormal.classList.remove('active');
-                    
+
                 }
 
             });
 
-
-
+            
 
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -63,53 +62,6 @@
                 effects: true,
                 normalizeScroll: true
             }); */
-
-            gsap
-                .timeline({
-                    scrollTrigger: {
-                        trigger : ".about",
-                        start : "top top",
-                        end : "+=100%",
-                        pin : true,
-                        scrub : 1
-                    }
-                })
-                .to(
-                    ".about",
-                    {
-                        backgroundColor : '#121212',
-                        z : 30,
-                        //ease: "power1.inOut"
-                    },
-                    3
-                )
-                .to(
-                    ".profile_img",
-                    {
-                        display : "none",
-                        z : 20,
-                        ease: "power1.inOut"
-                    },
-                    2.5
-                )
-                .to(
-                    "span",
-                    {
-                        color : "#121212",
-                        z : 20,
-                        ease: "power1.inOut"
-                    },
-                    2.5
-                )
-                .to(
-                    "swiper",
-                    {
-                        display : "none",
-                        z : 20,
-                        ease: "power1.inOut"
-                    },
-                    2.5
-                );
 
             gsap
                 .timeline({
@@ -155,15 +107,15 @@
                         opacity: 1,
                         z: 80,
                         ease: "power1.inOut",
-                        color : '#121212'
+                        color: '#121212'
                     },
                     0
                 )
                 .to(
                     ".project_intro",
                     {
-                        backgroundColor : '#78B1F5',
-                        z : 50,
+                        backgroundColor: '#78B1F5',
+                        z: 50,
                         ease: "power1.inOut"
                     },
                     0
@@ -304,7 +256,7 @@
                                         <p>더플릭스 근무</p>
                                         <span>2017.04~2018.09</span>
                                     </div><!-- .text_wrap end -->
-                                        <p>홍보 썸네일 및 배너 제작<br />
+                                    <p>홍보 썸네일 및 배너 제작<br />
                                         쇼룸 운영 및 스타일리스트 응대</p>
                                     <span>2016.03-2016.12</span>
                                     <p>창업동아리 투웨이 주얼리 제작</p>
@@ -312,7 +264,7 @@
                                     <p>동서대학교 뮤지컬과 4학년 졸업작품<br />
                                         ‘레미제라블’ 뮤지컬 의상 제작</p>
                                 </div><!-- .experience end -->
-                                
+
                             </div><!-- .right end -->
                         </div><!-- .about_info end -->
                     </div><!-- .info end -->
