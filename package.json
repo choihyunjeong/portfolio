@@ -5,8 +5,5 @@
   },
   "devDependencies": {
     "sass-embedded": "^1.93.3"
-  },
-  "scripts": {
-    "deploy": "vercel --prod"
   }
 }

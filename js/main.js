@@ -3,7 +3,7 @@ import { OrbitControls } from '/three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from '/three/examples/jsm/loaders/GLTFLoader.js';
 
 
-const camera = new THREE.PerspectiveCamera(
+/* const camera = new THREE.PerspectiveCamera(
     60,
     window.innerWidth / window.innerHeight,
     0.1,
@@ -50,7 +50,6 @@ const reRender3D = () => {
 };
 reRender3D();
 
-//const controls = new OrbitControls( camera, renderer.domElement );
 
 const raycaster = new THREE.Raycaster();
 
@@ -83,4 +82,4 @@ function onMouseMove(e){
             z : 1
         })
     }
-}
+} */

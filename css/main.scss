@@ -21,15 +21,33 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
-    display: none;
+    z-index: 99999;
+    display: block;
 
     &.active {
-        display: block;
+        display: none;
     }
 
-    &.on {
-        top: -10rem;
+    &.dark {
+        .inner {
+            .logo {
+                a {
+                    img {
+                        filter: invert(1);
+                    }
+                }
+            }
+            .nav {
+            .gnb {
+                li {
+                    a {
+                        color: #121212;
+                    }
+                }
+            }
+        }
+        }
+        
     }
 
     .inner {
@@ -43,7 +61,7 @@ body {
         .logo {
             a {
                 display: block;
-
+                
                 img {
                     width: 9.2rem;
                     object-fit: cover;
@@ -69,64 +87,6 @@ body {
     }
 }
 
-.header_change {
-    width: 100%;
-    height: 10rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    display: none;
-
-    &.active {
-        display: block;
-    }
-
-    &.on {
-        top: -10rem;
-    }
-
-    .inner {
-        max-width: 180rem;
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .logo {
-            a {
-                display: block;
-
-                img {
-                    width: 9.2rem;
-                    object-fit: cover;
-                    display: block;
-                    filter: invert(1);
-                }
-            }
-        }
-
-        .nav {
-            .gnb {
-                display: flex;
-                gap: 13rem;
-
-                li {
-                    a {
-                        font-size: 2rem;
-                        display: block;
-                    }
-
-                    img {
-                        width: 2.6rem;
-                        object-fit: cover;
-                    }
-                }
-            }
-        }
-    }
-}
 
 .main {
     position: relative;
@@ -137,17 +97,20 @@ body {
     .main_visual {
         width: 100%;
         height: 100vh;
-        background-color: #121212;
+        /* background-color: #121212; */
         display: flex;
         justify-content: flex-start;
-
+        background: url(../img/main_visual.png) center center / cover no-repeat;
+        position: relative;
 
         h2 {
             font-size: 4.5rem;
             color: #fff;
             line-height: 1.7;
-            margin: 29rem 19rem;
             text-align: center;
+            position: absolute;
+            top: 40%;
+            right: 7%;
         }
     }
 
@@ -159,7 +122,8 @@ body {
         h2 {
             font-size: 5rem;
             font-weight: 600;
-            margin: 5rem 8rem 2rem;
+            text-align: center;
+            margin: 9rem auto 5rem;
         }
 
         .info_wrap {
@@ -168,14 +132,14 @@ body {
             align-items: center;
 
             .info {
-                width: 72.91%;
+                width: 100%;
                 display: flex;
                 gap: 15rem;
                 justify-content: center;
                 align-items: center;
 
                 .about_img {
-                    width: 21.41%;
+                    width: 13%;
 
                     .img_wrap {
                         width: 100%;
@@ -232,7 +196,7 @@ body {
 
                 .about_info {
                     display: flex;
-                    gap: 30rem;
+                    gap: 10rem;
                     justify-content: center;
 
                     .left {
@@ -271,55 +235,6 @@ body {
                                 line-height: 1.6;
                             }
                         }
-
-                        .education {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.8rem;
-
-                            h3 {
-                                font-size: 3rem;
-                                font-weight: 600;
-                            }
-
-                            span {
-                                font-size: 1.8rem;
-                                color: #777;
-                            }
-
-                            p {
-                                font-size: 2rem;
-                                line-height: 1.5;
-                            }
-                        }
-                    }
-
-                    .right {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 3rem;
-
-                        .experience {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.8rem;
-
-                            h3 {
-                                font-size: 3rem;
-                                font-weight: 600;
-                            }
-
-                            span {
-                                font-size: 1.8rem;
-                                color: #777;
-                            }
-
-                            p {
-                                font-size: 2rem;
-                                line-height: 1.5;
-                            }
-                        }
-
                         .certificate {
                             display: flex;
                             flex-direction: column;
@@ -336,7 +251,7 @@ body {
                                 align-items: flex-end;
 
                                 span {
-                                    font-size: 1.8rem;
+                                    font-size: 1.6rem;
                                     color: #777;
                                 }
 
@@ -345,13 +260,64 @@ body {
                                 }
                             }
                         }
+                        
+                    }
+                    .center {
+                        .education {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.8rem;
+
+                            h3 {
+                                font-size: 3rem;
+                                font-weight: 600;
+                            }
+
+                            span {
+                                font-size: 1.6rem;
+                                color: #777;
+                            }
+
+                            p {
+                                font-size: 2rem;
+                                line-height: 1.5;
+                            }
+                        }
+                    }
+                    .right {
+                        
+                        .experience {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+                            .text_wrap {
+                                display: flex;
+                                gap: 1rem;
+                                align-items: flex-end;
+                            }
+                            h3 {
+                                font-size: 3rem;
+                                font-weight: 600;
+                            }
+
+                            span {
+                                font-size: 1.6rem;
+                                color: #777;
+                            }
+
+                            p {
+                                font-size: 2rem;
+                            }
+                        }
+
+                        
                     }
                 }
             }
         }
 
         .skills {
-            margin-top: 13rem;
+            margin-top: 18rem;
 
             .swiper-wrapper {
                 width: 100%;
@@ -1545,39 +1511,89 @@ body {
                 transition-timing-function: linear;
 
                 .swiper-slide {
-                    .img_wrap {
-                        width: 100%;
-                        box-shadow: 0 0 1rem #00000030;
-                        overflow-y: hidden;
-                        a {
-                            display: block;
-                            width: 100%;
-                            padding-bottom: 100%;
-                            position: relative;
-                            img {
-                                width: 100%;
-                                object-fit: cover;
+                        position: relative;
+                        border-radius: 2rem;
+                        overflow: hidden;
+                        &:hover {
+                            .hover_text {
                                 display: block;
-                                box-shadow: 0 0 1rem #00000030;
-                                position: absolute;
-                                top: 0;
-                                left: 0;
+                                bottom: 0;
+                                transition: bottom 0.5s;
                             }
                         }
-                    }
-                }
-                .img5 {
-                    .img_wrap {
-                        box-shadow: none;
-                        a {
-                            img {
-                                width: 70%;
+                        .img_wrap {
+                            width: 100%;
+                            box-shadow: 0 0 1rem #00000030;
+                            overflow: hidden;
+                            a {
+                                display: block;
+                                width: 100%;
+                                padding-bottom: 100%;
+                                position: relative;
+                                img {
+                                    width: 100%;
+                                    object-fit: cover;
+                                    display: block;
+                                    box-shadow: 0 0 1rem #00000030;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                        }
+                        .hover_text {
+                            width: 100%;
+                            height: 50%;
+                            position: absolute;
+                            bottom: -100%;
+                            left: 0;
+                            background-color: #000000c4;
+                            border-top-right-radius: 2rem;
+                            border-top-left-radius: 2rem;
+                            /* display: none; */
+                            z-index: 99;
+                            .icon_wrap {
+                                width: 15%;
+                                padding-bottom: 100%;
+                                position: relative;
+                                top: 2rem;
                                 left: 50%;
                                 transform: translateX(-50%);
+                                img {
+                                    width: 100%;
+                                    object-fit: cover;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                            p {
+                                font-size: 2rem;
+                                color: #fff;
+                                white-space: nowrap;
+                                text-align: center;
+                                line-height: 1.6;
+                                position: absolute;
+                                left: 50%;
+                                top: 65%;
+                                transform: translate(-50%, -50%);
                             }
                         }
                     }
-                }
+                    .img5 {
+                        .img_wrap {
+                            box-shadow: none;
+                            a {
+                                img {
+                                    width: 70%;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
+                        
+                    }
+                
             }
         }
     }

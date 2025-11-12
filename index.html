@@ -17,11 +17,11 @@
             }
         }   
     </script>
-    <script type="module">
+    <!-- <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-    </script>
+    </script> -->
 
     <script src="lib/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main.js"></script>
@@ -36,36 +36,38 @@
         $(function () {
 
             let headerNormal = document.querySelector('.header_normal');
-            let headerChange = document.querySelector('.header_change');
+
             let project = document.querySelector('.project');
             let projectTop = project.offsetTop;
+            let projectHeight = project.clientHeight;
             let windowHeight = window.innerHeight;
+            let mainVisual = document.querySelector('.main_visual');
+            let mainVisualHeight = mainVisual.clientHeight;
             let contact = document.querySelector('.contact');
             let contactTop = contact.offsetTop;
-            let prevScrollBar = 0;
+            let aboutHeight = document.querySelector('.about').clientHeight;
+
 
             window.addEventListener('scroll', () => {
                 let scrollTop = window.scrollY;
                 //console.log(contactTop);
-
-                if (scrollTop > prevScrollBar) {
-                    headerNormal.classList.add('on');
-                    headerChange.classList.add('on');
+                if (scrollTop >= mainVisualHeight && scrollTop < aboutHeight + mainVisualHeight) {
+                    headerNormal.classList.add('dark');
+                } else if (scrollTop >= aboutHeight + mainVisualHeight && scrollTop < aboutHeight + mainVisualHeight + projectHeight) {
+                    headerNormal.classList.remove('dark');
+                } else if (scrollTop >= aboutHeight + mainVisualHeight + projectHeight) {
+                    headerNormal.classList.add('dark');
                 } else {
-                    headerNormal.classList.remove('on');
-                    headerChange.classList.remove('on');
+                    headerNormal.classList.remove('dark');
                 }
-                prevScrollBar = scrollTop;
 
-                if (scrollTop > 1900) {
-                    headerNormal.classList.remove('active');
-                    headerChange.classList.add('active');
-                } else {
+                
+                if (scrollTop > 9800) {
                     headerNormal.classList.add('active');
-                    headerChange.classList.remove('active');
-                }
-                if (scrollTop > 10030) {
-                    headerChange.classList.remove('active');
+                    
+                } else {
+                    headerNormal.classList.remove('active');
+                    
                 }
 
             });
@@ -137,7 +139,7 @@
                 slidesPerView: 8,
                 spaceBetween: 150,
                 loop: true,
-                speed: 8000,
+                speed: 4000,
                 autoplay: {
                     delay: 0,
                     disableOnInteraction: false,
@@ -148,7 +150,7 @@
                 slidesPerView: 4,
                 spaceBetween: 100,
                 loop: true,
-                speed: 5000,
+                speed: 4000,
                 autoplay: {
                     delay: 0,
                     disableOnInteraction: false,
@@ -195,22 +197,6 @@
                 </nav><!-- .nav end -->
             </div><!-- .inner end -->
         </header><!-- .header_normal end -->
-        <header class="header_change">
-            <div class="inner">
-                <h1 class="logo"><a href="index.html"><img src="img/logo.svg" alt="logo"></a></h1>
-                <nav class="nav">
-                    <ul class="gnb">
-                        <li><a href="#ABOUT">ABOUT</a></li>
-                        <li><a href="#REPONSIVE">REPONSIVE WEB</a></li>
-                        <li><a href="#ADAPTIVE">ADAPTIVE WEB</a></li>
-                        <li><a href="#MOBILE">MOBILE APP</a></li>
-                        <li><a href="#CLONE">CLONE CODING</a></li>
-                        <li><a href="#GRAPHIC">GRAPHIC DESIGN</a></li>
-                        <li><a href="#CONTACT"><img src="img/icon_contact.svg" alt="icon_contact"></a></li>
-                    </ul><!-- .gnb end -->
-                </nav><!-- .nav end -->
-            </div><!-- .inner end -->
-        </header><!-- .header_change end -->
 
         <main class="main">
 
@@ -246,33 +232,6 @@
                                         010-9542-9815<br />
                                         luceteee@naver.com</P>
                                 </div><!-- .profile end -->
-                                <div class="education">
-                                    <h3>EDUCATION</h3>
-                                    <span>2011.03~2013.08</span>
-                                    <p>양운고등학교</p>
-                                    <span>2014.03-2022.02</span>
-                                    <p>동서대학교 패션디자인학과</p>
-                                    <span>2025.07~2025.11</span>
-                                    <p>그린컴퓨터아카데미<br />
-                                        UI/UX 반응형 웹디자인&<br />
-                                        웹퍼블리셔 양성과정 수료</p>
-                                </div><!-- .education end -->
-                            </div><!-- .left end -->
-                            <div class="right">
-                                <div class="experience">
-                                    <h3>EXPERIENCE</h3>
-                                    <span>2021~2022</span>
-                                    <p>헤이미쉬 가죽공방 운영</p>
-                                    <span>2017.04~2018.09</span>
-                                    <p>더플릭스 근무<br />
-                                        홍보 썸네일 및 배너 제작<br />
-                                        쇼룸 운영 및 스타일리스트 응대</p>
-                                    <span>2016.03-2016.12</span>
-                                    <p>창업동아리 투웨이 주얼리 제작</p>
-                                    <span>2016.09-2016.12</span>
-                                    <p>동서대학교 뮤지컬과 4학년 졸업작품<br />
-                                        ‘레미제라블’ 뮤지컬 의상 제작</p>
-                                </div><!-- .experience end -->
                                 <div class="certificate">
                                     <h3>CERTIFICATE</h3>
                                     <div class="text_wrap">
@@ -284,6 +243,40 @@
                                         <span>2017</span>
                                     </div><!-- .text_wrap end -->
                                 </div><!-- .certificate end -->
+                            </div><!-- .left end -->
+                            <div class="center">
+                                <div class="education">
+                                    <h3>EDUCATION</h3>
+                                    <span>2011.03~2013.08</span>
+                                    <p>양운고등학교</p>
+                                    <span>2014.03-2022.02</span>
+                                    <p>동서대학교 패션디자인학과</p>
+                                    <span>2025.07~2025.11</span>
+                                    <p>그린컴퓨터아카데미<br />
+                                        UI/UX 반응형 웹디자인&<br />
+                                        웹퍼블리셔 양성과정 수료</p>
+                                </div><!-- .education end -->
+                            </div><!-- .center end -->
+                            <div class="right">
+                                <div class="experience">
+                                    <h3>EXPERIENCE</h3>
+                                    <div class="text_wrap">
+                                        <p>헤이미쉬 가죽공방 운영</p>
+                                        <span>2021~2022</span>
+                                    </div><!-- .text_wrap end -->
+                                    <div class="text_wrap">
+                                        <p>더플릭스 근무</p>
+                                        <span>2017.04~2018.09</span>
+                                    </div><!-- .text_wrap end -->
+                                        <p>홍보 썸네일 및 배너 제작<br />
+                                        쇼룸 운영 및 스타일리스트 응대</p>
+                                    <span>2016.03-2016.12</span>
+                                    <p>창업동아리 투웨이 주얼리 제작</p>
+                                    <span>2016.09-2016.12</span>
+                                    <p>동서대학교 뮤지컬과 4학년 졸업작품<br />
+                                        ‘레미제라블’ 뮤지컬 의상 제작</p>
+                                </div><!-- .experience end -->
+                                
                             </div><!-- .right end -->
                         </div><!-- .about_info end -->
                     </div><!-- .info end -->
@@ -783,27 +776,55 @@
                                     <img src="img/graphic_img1.jpg" alt="애견펜션포스터" />
                                 </a>
                             </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>클리핑 마스크를 사용하여<br />
+                                    애견펜션포스터를 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
                         </div><!-- .swiper-slide end -->
                         <div class="swiper-slide">
                             <div class="img_wrap">
                                 <a href="img/graphic_img2.jpg" data-fancybox="gallery">
-                                    <img src="img/graphic_img2.jpg" alt="애견펜션포스터" />
+                                    <img src="img/graphic_img2.jpg" alt="멤버십포스터" />
                                 </a>
                             </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>폰트를 활용하여 심플하고 깔끔한<br />
+                                    멤버십포스터를 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
                         </div><!-- .swiper-slide end -->
                         <div class="swiper-slide">
                             <div class="img_wrap">
                                 <a href="img/graphic_img3.jpg" data-fancybox="gallery">
-                                    <img src="img/graphic_img3.jpg" alt="애견펜션포스터" />
+                                    <img src="img/graphic_img3.jpg" alt="캠핑포스터" />
                                 </a>
                             </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>도형과 폰트를 활용하여<br />
+                                    캠핑포스터를 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
                         </div><!-- .swiper-slide end -->
                         <div class="swiper-slide">
                             <div class="img_wrap">
                                 <a href="img/graphic_img4.gif" data-fancybox="gallery">
-                                    <img src="img/graphic_img4.gif" alt="애견펜션포스터" />
+                                    <img src="img/graphic_img4.gif" alt="샌드위치포스터" />
                                 </a>
                             </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>포토샵 gif를 활용하여 동적인<br />
+                                    샌드위치 포스터를 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
                         </div><!-- .swiper-slide end -->
                         <div class="swiper-slide img5">
                             <div class="img_wrap">
@@ -811,6 +832,27 @@
                                     <img src="img/graphic_img5.jpg" alt="상세페이지" />
                                 </a>
                             </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>AI툴을 활용하여 가상브랜드를 만들어<br />
+                                    그에 맞는 상세페이지를 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide img6">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img6.png" data-fancybox="gallery">
+                                    <img src="img/graphic_img6.png" alt="블렌더모델링" />
+                                </a>
+                            </div><!-- .img_wrap end -->
+                            <div class="hover_text">
+                                <div class="icon_wrap">
+                                    <img src="img/icon_blender.svg" alt="블렌더아이콘">
+                                </div><!-- .icon_wrap end -->
+                                <p>블렌더를 사용하여 귀여운 느낌의<br />
+                                    모니터, 키보드와 키캡을 제작하였습니다.</p>
+                            </div><!-- .hover_text -->
                         </div><!-- .swiper-slide end -->
 
                     </div><!-- .swiper-wrapper end -->
