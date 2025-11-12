@@ -46,19 +46,16 @@
             let contact = document.querySelector('.contact');
             let contactTop = contact.offsetTop;
             let aboutHeight = document.querySelector('.about').clientHeight;
+            let projectListTop = document.querySelector('.project_list').offsetTop
 
 
             window.addEventListener('scroll', () => {
                 let scrollTop = window.scrollY;
                 //console.log(contactTop);
-                if (scrollTop >= mainVisualHeight && scrollTop < aboutHeight + mainVisualHeight) {
-                    headerNormal.classList.add('dark');
-                } else if (scrollTop >= aboutHeight + mainVisualHeight && scrollTop < aboutHeight + mainVisualHeight + projectHeight) {
-                    headerNormal.classList.remove('dark');
-                } else if (scrollTop >= aboutHeight + mainVisualHeight + projectHeight) {
-                    headerNormal.classList.add('dark');
+                if (scrollTop > projectTop && scrollTop < projectListTop + 500)  {
+                    headerNormal.classList.add('light');
                 } else {
-                    headerNormal.classList.remove('dark');
+                    headerNormal.classList.remove('light');
                 }
 
                 
@@ -127,7 +124,7 @@
                     ".heading",
                     {
                         opacity: 1,
-                        z: 50,
+                        z: 80,
                         ease: "power1.inOut"
                     },
                     0
@@ -223,7 +220,7 @@
                         <div class="about_info">
                             <div class="left">
                                 <div class="profile">
-                                    <h3>PROFILE</h3>
+                                    <h3>Profile</h3>
                                     <div class="name">
                                         <strong>최현정</strong>
                                         <span>CHOI HYUN JEONG</span>
@@ -233,7 +230,7 @@
                                         luceteee@naver.com</P>
                                 </div><!-- .profile end -->
                                 <div class="certificate">
-                                    <h3>CERTIFICATE</h3>
+                                    <h3>Certificate</h3>
                                     <div class="text_wrap">
                                         <p>패션스타일리스트</p>
                                         <span>2017</span>
@@ -246,7 +243,7 @@
                             </div><!-- .left end -->
                             <div class="center">
                                 <div class="education">
-                                    <h3>EDUCATION</h3>
+                                    <h3>Education</h3>
                                     <span>2011.03~2013.08</span>
                                     <p>양운고등학교</p>
                                     <span>2014.03-2022.02</span>
@@ -259,7 +256,7 @@
                             </div><!-- .center end -->
                             <div class="right">
                                 <div class="experience">
-                                    <h3>EXPERIENCE</h3>
+                                    <h3>Experience</h3>
                                     <div class="text_wrap">
                                         <p>헤이미쉬 가죽공방 운영</p>
                                         <span>2021~2022</span>
@@ -341,7 +338,7 @@
 
             <section class="project" id="PROJECT">
                 <div class="project_intro">
-                    <h2 class="heading">PROJECT</h2>
+                    <h2 class="heading">Project</h2>
                     <div class="zoom_item" data-layer="2">
                         <img src="img/intro_img1.jpg" alt="상세페이지">
                     </div><!-- .zoom_item end -->
@@ -861,11 +858,11 @@
 
             <section class="contact" id="CONTACT">
                 <ul class="contact_header">
-                    <li><a href="#PROJECT">PROJECT</a></li>
+                    <li><a href="#PROJECT">Project</a></li>
                     <li><a href="index.html">
                             <img src="img/logo.svg" alt="logo">
                         </a></li>
-                    <li><a href="#CONTACT">CONTACT</a></li>
+                    <li><a href="#CONTACT">Contact</a></li>
                 </ul><!-- .contact_header end -->
                 <div class="contact_wrap">
                     <div class="address">

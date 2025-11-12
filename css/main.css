@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import url(reset.css);
 @import url(../font/Pretendard/stylesheet.css);
+@import url(../font/Rosemartin/stylesheet.css);
+@import url(../font/exqt/stylesheet.css);
 body,
 html {
   font-family: "Pretendard";
@@ -27,11 +29,11 @@ body {
 .header_normal.active {
   display: none;
 }
-.header_normal.dark .inner .logo a img {
-  filter: invert(1);
+.header_normal.light .inner .logo a img {
+  filter: invert(0);
 }
-.header_normal.dark .inner .nav .gnb li a {
-  color: #121212;
+.header_normal.light .inner .nav .gnb li a {
+  color: #fff;
 }
 .header_normal .inner {
   max-width: 180rem;
@@ -49,6 +51,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+  filter: invert(1);
 }
 .header_normal .inner .nav .gnb {
   display: flex;
@@ -56,7 +59,7 @@ body {
 }
 .header_normal .inner .nav .gnb li a {
   font-size: 2rem;
-  color: #fff;
+  color: #121212;
   display: block;
 }
 
@@ -71,17 +74,19 @@ body {
   /* background-color: #121212; */
   display: flex;
   justify-content: flex-start;
-  background: url(../img/main_visual.png) center center/cover no-repeat;
+  background: url(../img/mainvisual.png) center center/cover no-repeat;
   position: relative;
 }
 .main .main_visual h2 {
-  font-size: 4.5rem;
-  color: #fff;
+  font-family: "exqt";
+  font-size: 5rem;
+  font-weight: 500;
+  color: #121212;
   line-height: 1.7;
   text-align: center;
   position: absolute;
-  top: 40%;
-  right: 7%;
+  top: 30%;
+  left: 8%;
 }
 .main .about {
   width: 100%;
@@ -284,8 +289,8 @@ body {
   background-color: #121212;
 }
 .main .project .project_intro h2 {
+  font-family: "Rosemartin";
   font-size: 20rem;
-  font-weight: 600;
   opacity: 0.1;
   position: absolute;
   left: 50%;
@@ -1253,7 +1258,7 @@ body {
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 12rem;
+  margin-bottom: 15rem;
 }
 .main .graphic_design .graphicSwiper {
   overflow: visible;
@@ -1359,6 +1364,7 @@ body {
   padding: 0 8rem;
 }
 .main .contact .contact_header li a {
+  font-family: "Rosemartin";
   color: #fff;
   font-size: 4rem;
   font-weight: 500;
