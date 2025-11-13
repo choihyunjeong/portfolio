@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/main.css">
 
     <script src="lib/jquery-3.7.1.min.js"></script>
-    <script type="module" src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -53,6 +52,14 @@
 
             });
 
+            const Moving = document.getElementById('moving');
+
+
+            document.onmousemove = ev => {
+                const positionX = (window.innerWidth / -90 - ev.clientX) / -70;
+                const positionY = -ev.clientY / 20;
+                Moving.style.transform = `translate(${positionX}px, ${positionY}px)`;
+            };
 
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -188,9 +195,9 @@
         <main class="main">
 
             <section class="main_visual">
-                <img src="img/mainvisual.png" alt="메인비주얼배경이미지">
                 <h2>사용자의 흥미에서 출발해,<br />
                     문제를 해결하는 디자인으로 완성합니다.</h2>
+                <img src="img/mainvisual_nobgcolor.png" alt="메인비주얼배경이미지" id="moving">
             </section><!-- .main_visual end -->
 
             <section class="about" id="ABOUT">
@@ -199,7 +206,7 @@
                     <div class="info">
                         <div class="about_img">
                             <div class="img_wrap">
-                                <img src="img/profile_img.jpg" alt="profile_img" class="profile_img">
+                                <img src="img/profile_img.jpg" alt="profile_img">
                             </div><!-- .img_wrap end -->
                             <div class="btn_wrap">
                                 <a href="#" class="pdf_btn">
