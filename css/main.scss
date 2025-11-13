@@ -80,7 +80,7 @@ body {
         .nav {
             .gnb {
                 display: flex;
-                gap: 35rem;
+                gap: 6rem;
 
                 li {
                     a {
@@ -1768,13 +1768,4 @@ body {
             }
         }
     }
-}
-
-#container3D {
-    position: absolute;
-    top: 0;
-    left: 0;
-    inset: 0;
-    /* background-color: red; */
-    z-index: 999;
 }

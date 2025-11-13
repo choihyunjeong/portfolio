@@ -35,7 +35,7 @@
             window.addEventListener('scroll', () => {
                 let scrollTop = window.scrollY;
                 //console.log(contactTop);
-                if (scrollTop > projectTop && scrollTop < projectListTop + 500) {
+                if (scrollTop > projectTop && scrollTop < projectListTop) {
                     headerNormal.classList.add('light');
                 } else {
                     headerNormal.classList.remove('light');
@@ -120,7 +120,7 @@
                 .to(
                     ".project_intro",
                     {
-                        backgroundColor: '#78B1F5',
+                        backgroundColor: '#fff',
                         z: 50,
                         ease: "power1.inOut"
                     },
@@ -185,6 +185,7 @@
                     <ul class="gnb">
                         <li><a href="#ABOUT">ABOUT</a></li>
                         <li><a href="#PROJECT">PROJECT</a></li>
+                        <li><a href="#CLONE">CLONE CODING</a></li>
                         <li><a href="#GRAPHIC">GRAPHIC DESIGN</a></li>
                         <li><a href="#CONTACT">CONTACT</a></li>
                     </ul><!-- .gnb end -->

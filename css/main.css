@@ -59,7 +59,7 @@ body {
 }
 .header_normal .inner .nav .gnb {
   display: flex;
-  gap: 35rem;
+  gap: 6rem;
 }
 .header_normal .inner .nav .gnb li a {
   font-size: 2rem;
@@ -1493,13 +1493,4 @@ body {
 .main .contact .copyright p {
   font-size: 1.6rem;
   color: #fff;
-}
-
-#container3D {
-  position: absolute;
-  top: 0;
-  left: 0;
-  inset: 0;
-  /* background-color: red; */
-  z-index: 999;
 }/*# sourceMappingURL=main.css.map */
