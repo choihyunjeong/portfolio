@@ -69,6 +69,10 @@ body {
                     object-fit: cover;
                     display: block;
                     filter: invert(1);
+                    transition: 0.3s;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
                 }
             }
         }
@@ -83,6 +87,11 @@ body {
                         font-size: 2rem;
                         color: #121212;
                         display: block;
+                        transition: 0.3s;
+                        &:hover {
+                            transform: scale(1.1);
+                            font-weight: 500;
+                        }
                     }
                 }
             }
