@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Bloopoly';
+    src: url('Bloopoly.eot');
+    src: url('Bloopoly.eot?#iefix') format('embedded-opentype'),
+        url('Bloopoly.woff2') format('woff2'),
+        url('Bloopoly.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

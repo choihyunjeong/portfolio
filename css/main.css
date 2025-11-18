@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import url(reset.css);
 @import url(../font/Pretendard/stylesheet.css);
-@import url(../font/Rosemartin/stylesheet.css);
-@import url(../font/exqt/stylesheet.css);
+@import url(../font/Bloopoly/stylesheet.css);
+@import url(../font/LeeSeoyun/stylesheet.css);
 body,
 html {
   font-family: "Pretendard";
@@ -23,14 +23,14 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99999;
+  z-index: 9999;
   display: block;
 }
 .header_normal.active {
   display: none;
 }
-.header_normal.light .inner .logo a img {
-  filter: invert(0);
+.header_normal.light .inner .logo a {
+  color: #fff;
 }
 .header_normal.light .inner .nav .gnb li a {
   color: #fff;
@@ -45,24 +45,22 @@ body {
 }
 .header_normal .inner .logo a {
   display: block;
-}
-.header_normal .inner .logo a img {
-  width: 9.2rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  display: block;
-  filter: invert(1);
+  font-family: "Bloopoly";
+  font-size: 5rem;
+  color: #121212;
   transition: 0.3s;
+  letter-spacing: 0.1rem;
 }
-.header_normal .inner .logo a img:hover {
-  transform: scale(1.1);
+.header_normal .inner .logo a:hover {
+  transform: scale(1.15) rotate(-4deg);
 }
 .header_normal .inner .nav .gnb {
   display: flex;
-  gap: 6rem;
+  gap: 4rem;
 }
 .header_normal .inner .nav .gnb li a {
-  font-size: 2rem;
+  font-family: "LeeSeoyun";
+  font-size: 2.4rem;
   color: #121212;
   display: block;
   transition: 0.3s;
@@ -81,25 +79,122 @@ body {
   width: 100%;
   height: 100vh;
   position: relative;
-  background-color: #D3D0CE;
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-bottom: 20rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-.main .main_visual img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.main .main_visual .board {
+  transform: rotateZ(0.003turn) rotateY(0.1turn) rotateX(-0.13turn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-left: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+.main .main_visual .key {
   position: relative;
+  width: 10rem;
+  height: 9rem;
+  font-size: 3rem;
+  font-family: "LeeSeoyun";
+  border: 0.1rem solid #5D639D;
+  border-radius: 1.2rem;
+  background: #7b83ca;
+  color: #F2F2F2;
+  box-shadow: 0.4rem 0.4rem 0 0 #5D639D, 0.8rem 0.8rem 0 0 #5D639D, 1rem 1rem 0 0 #5D639D, 1.6rem 1.6rem 0 0 #5D639D;
+  transition: 0.2s ease;
 }
-.main .main_visual h2 {
-  font-family: "exqt";
+.main .main_visual .key:hover {
+  cursor: pointer;
+  transform: translateX(0.2rem) translateY(0.2rem);
+  border: 0.1rem solid #5D639D;
+  background: #6f77bb;
+  box-shadow: 0.15rem 0.15rem 0 0 #5D639D, 0.4rem 0.4rem 0 0 #5D639D, 0.7rem 0.7rem 0 0 #5D639D, 1.4rem 1.4rem 0 0 #5D639D;
+}
+.main .main_visual .key:active, .main .main_visual .key.isDown {
+  cursor: grabbing;
+  transform: translateX(0.8rem) translateY(0.8rem);
+  border: 0.1rem solid #474d85;
+  background: #565d96;
+  box-shadow: 0.1rem 0.1rem 0 0 #474d85, 0.2rem 0.2rem 0 0 #474d85, 0.4rem 0.4rem 0 0 #474d85, 0.9rem 0.9rem 0 0 #474d85;
+  filter: blur(0.02rem);
+  color: #F2F2F2;
+}
+.main .main_visual .text {
+  position: absolute;
+  top: 23%;
+  left: 51%;
+  transform: translateX(-50%);
+}
+.main .main_visual .text .Enter {
+  display: none;
+  line-height: 1.1;
+  text-align: center;
+  color: #F2F2F2;
+}
+.main .main_visual .text .Enter p {
+  font-family: "Bloopoly";
+  font-size: 20rem;
+  font-weight: normal;
+  color: #FEC6E9;
+  margin-bottom: 3rem;
+}
+.main .main_visual .text .Enter span {
+  font-family: "LeeSeoyun";
   font-size: 5rem;
   font-weight: 500;
-  color: #121212;
-  line-height: 1.7;
+}
+.main .main_visual .text .Enter.active {
+  display: block;
+}
+.main .main_visual .text .Shift {
+  display: none;
+  line-height: 1.1;
   text-align: center;
-  position: absolute;
-  top: 30%;
-  left: 8%;
+  color: #F2F2F2;
+}
+.main .main_visual .text .Shift p {
+  font-family: "Bloopoly";
+  font-size: 20rem;
+  font-weight: normal;
+  color: #FEC6E9;
+  margin-bottom: 3rem;
+}
+.main .main_visual .text .Shift span {
+  font-family: "LeeSeoyun";
+  font-size: 4.8rem;
+  font-weight: 500;
+}
+.main .main_visual .text .Shift.active {
+  display: block;
+}
+.main .main_visual .text .Ctrl {
+  display: none;
+  line-height: 1.1;
+  text-align: center;
+  color: #F2F2F2;
+}
+.main .main_visual .text .Ctrl p {
+  font-family: "Bloopoly";
+  font-size: 20rem;
+  font-weight: normal;
+  color: #FEC6E9;
+  margin-bottom: 3rem;
+}
+.main .main_visual .text .Ctrl span {
+  font-family: "LeeSeoyun";
+  font-size: 4.6rem;
+  font-weight: 500;
+}
+.main .main_visual .text .Ctrl.active {
+  display: block;
 }
 .main .about {
   width: 100%;
@@ -107,10 +202,12 @@ body {
   overflow: hidden;
 }
 .main .about h2 {
-  font-size: 5rem;
-  font-weight: 600;
+  font-family: "Bloopoly";
+  font-size: 8rem;
+  /* font-weight: 600; */
+  color: #5D639D;
   text-align: center;
-  margin: 9rem auto 5rem;
+  margin: 8rem auto 4rem;
 }
 .main .about .info_wrap {
   display: flex;
@@ -143,13 +240,13 @@ body {
 }
 .main .about .info_wrap .info .about_img .btn_wrap {
   width: 100%;
-  border: 0.1rem solid #121212;
+  border: 0.1rem solid #5D639D;
   border-radius: 1rem;
   margin-top: 2rem;
   transition: 0.3s;
 }
 .main .about .info_wrap .info .about_img .btn_wrap:hover {
-  background-color: #121212;
+  background-color: #5D639D;
 }
 .main .about .info_wrap .info .about_img .btn_wrap:hover span {
   color: #fff;
@@ -165,12 +262,14 @@ body {
 }
 .main .about .info_wrap .info .about_img .btn_wrap a span {
   font-size: 2rem;
+  color: #5D639D;
 }
 .main .about .info_wrap .info .about_img .btn_wrap a img {
   width: 2.2rem;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+  filter: invert(39%) sepia(31%) saturate(660%) hue-rotate(196deg) brightness(95%) contrast(91%);
 }
 .main .about .info_wrap .info .about_info {
   display: flex;
@@ -188,8 +287,10 @@ body {
   gap: 0.8rem;
 }
 .main .about .info_wrap .info .about_info .left .profile h3 {
-  font-size: 3rem;
+  font-family: "LeeSeoyun";
+  font-size: 3.6rem;
   font-weight: 600;
+  color: #5D639D;
 }
 .main .about .info_wrap .info .about_info .left .profile .name {
   display: flex;
@@ -214,8 +315,10 @@ body {
   gap: 0.8rem;
 }
 .main .about .info_wrap .info .about_info .left .certificate h3 {
-  font-size: 3rem;
+  font-family: "LeeSeoyun";
+  font-size: 3.6rem;
   font-weight: 600;
+  color: #5D639D;
 }
 .main .about .info_wrap .info .about_info .left .certificate .text_wrap {
   display: flex;
@@ -235,7 +338,9 @@ body {
   gap: 0.8rem;
 }
 .main .about .info_wrap .info .about_info .center .education h3 {
-  font-size: 3rem;
+  font-family: "LeeSeoyun";
+  color: #5D639D;
+  font-size: 3.6rem;
   font-weight: 600;
 }
 .main .about .info_wrap .info .about_info .center .education span {
@@ -257,8 +362,10 @@ body {
   align-items: flex-end;
 }
 .main .about .info_wrap .info .about_info .right .experience h3 {
-  font-size: 3rem;
+  font-family: "LeeSeoyun";
+  font-size: 3.6rem;
   font-weight: 600;
+  color: #5D639D;
 }
 .main .about .info_wrap .info .about_info .right .experience span {
   font-size: 1.6rem;
@@ -268,7 +375,7 @@ body {
   font-size: 2rem;
 }
 .main .about .skills {
-  margin-top: 18rem;
+  margin-top: 13rem;
 }
 .main .about .skills .swiper-wrapper {
   width: 100%;
@@ -298,11 +405,10 @@ body {
   overflow: hidden;
   position: relative;
   perspective: 100svh;
-  width: 100%;
   background-color: #121212;
 }
 .main .project .project_intro h2 {
-  font-family: "Rosemartin";
+  font-family: "Bloopoly";
   font-size: 20rem;
   opacity: 0.1;
   position: absolute;
@@ -437,6 +543,10 @@ body {
   height: 100vh;
   display: flex;
   background: #78B1F5;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0%); */
 }
 .main .project_list .kpass .left {
   width: 55.72%;
@@ -619,7 +729,11 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0%); */
 }
 .main .project_list .baskinrobbins .left {
   width: 44.28%;
@@ -803,6 +917,10 @@ body {
   height: 100vh;
   display: flex;
   overflow: hidden;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0%); */
 }
 .main .project_list .ZARA .left {
   width: 55.72%;
@@ -864,6 +982,7 @@ body {
 .main .project_list .ZARA .right {
   width: 44.28%;
   position: relative;
+  background-color: #fff;
 }
 .main .project_list .ZARA .right .img_wrap {
   width: 52.94%;
@@ -984,6 +1103,10 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0%); */
 }
 .main .project_list .BusanCinemaCenter .left {
   width: 44.28%;
@@ -1163,13 +1286,14 @@ body {
 }
 .main .clone_coding {
   width: 100%;
-  margin: 15rem auto 20rem;
+  margin: 17rem auto 20rem;
 }
 .main .clone_coding h2 {
-  font-size: 5rem;
-  font-weight: 600;
+  font-family: "Bloopoly";
+  font-size: 8rem;
+  color: #5D639D;
   text-align: center;
-  margin-bottom: 10rem;
+  margin-bottom: 8rem;
 }
 .main .clone_coding .list {
   display: flex;
@@ -1268,8 +1392,9 @@ body {
   margin: 10rem auto 25rem;
 }
 .main .graphic_design h2 {
-  font-size: 5rem;
-  font-weight: 600;
+  font-family: "Bloopoly";
+  font-size: 8rem;
+  color: #5D639D;
   text-align: center;
   margin-bottom: 15rem;
 }
@@ -1320,7 +1445,6 @@ body {
   background-color: rgba(0, 0, 0, 0.768627451);
   border-top-right-radius: 2rem;
   border-top-left-radius: 2rem;
-  /* display: none; */
   z-index: 99;
 }
 .main .graphic_design .graphicSwiper .swiper-wrapper .swiper-slide .hover_text .icon_wrap {
@@ -1373,20 +1497,25 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 5rem;
-  padding: 0 8rem;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 0 6rem;
+  z-index: 9999;
 }
 .main .contact .contact_header li a {
-  font-family: "Rosemartin";
-  color: #fff;
-  font-size: 4rem;
-  font-weight: 500;
+  font-family: "Bloopoly";
+  color: #FEC6E9;
+  font-size: 5rem;
+  letter-spacing: 0.1rem;
 }
 .main .contact .contact_header li a img {
   width: 9rem;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+}
+.main .contact .contact_header li:nth-child(2) a {
+  font-size: 7rem;
 }
 .main .contact .contact_wrap {
   width: 100%;

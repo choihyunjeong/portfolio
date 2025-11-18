@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('LeeSeoyun.eot');
+    src: url('LeeSeoyun.eot?#iefix') format('embedded-opentype'),
+        url('LeeSeoyun.woff2') format('woff2'),
+        url('LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

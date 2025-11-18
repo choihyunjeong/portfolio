@@ -1,7 +1,9 @@
+@charset "utf-8";
 @import url(reset.css);
 @import url(../font/Pretendard/stylesheet.css);
-@import url(../font/Rosemartin/stylesheet.css);
-@import url(../font/exqt/stylesheet.css);
+@import url(../font/Bloopoly/stylesheet.css);
+@import url(../font/LeeSeoyun/stylesheet.css);
+
 
 body,
 html {
@@ -23,33 +25,32 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99999;
+    z-index: 9999;
     display: block;
-
     &.active {
         display: none;
     }
 
     &.light {
+
         .inner {
             .logo {
                 a {
-                    img {
-                        filter: invert(0);
-                    }
+                    color: #fff;
                 }
             }
+
             .nav {
-            .gnb {
-                li {
-                    a {
-                        color: #fff;
+                .gnb {
+                    li {
+                        a {
+                            color: #fff;
+                        }
                     }
                 }
             }
         }
-        }
-        
+
     }
 
     .inner {
@@ -59,35 +60,37 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        
 
         .logo {
             a {
                 display: block;
-                
-                img {
-                    width: 9.2rem;
-                    object-fit: cover;
-                    display: block;
-                    filter: invert(1);
-                    transition: 0.3s;
-                    &:hover {
-                        transform: scale(1.1);
-                    }
+                font-family: 'Bloopoly';
+                font-size: 5rem;
+                color: #121212;
+                transition: 0.3s;
+                letter-spacing: 0.1rem;
+
+                &:hover {
+                    transform: scale(1.15) rotate(-4deg);
                 }
+
             }
         }
 
         .nav {
             .gnb {
                 display: flex;
-                gap: 6rem;
+                gap: 4rem;
 
                 li {
                     a {
-                        font-size: 2rem;
+                        font-family: 'LeeSeoyun';
+                        font-size: 2.4rem;
                         color: #121212;
                         display: block;
                         transition: 0.3s;
+
                         &:hover {
                             transform: scale(1.1);
                             font-weight: 500;
@@ -110,23 +113,151 @@ body {
         width: 100%;
         height: 100vh;
         position: relative;
-        background-color: #D3D0CE;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: relative;
+        background-color: #121212;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        padding-bottom: 20rem;
+        user-select: none;
+
+        .board {
+            transform: rotateZ(0.003turn) rotateY(0.1turn) rotateX(-0.13turn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(10rem * 0.12);
+            margin-left: calc(6rem * 0.2);
+            margin-bottom: calc(6rem * 0.1);
         }
-        h2 {
-            font-family: 'exqt';
-            font-size: 5rem;
-            font-weight: 500;
-            color: #121212;
-            line-height: 1.7;
-            text-align: center;
+
+        .key {
+            position: relative;
+            width: 10rem;
+            height: 9rem;
+            font-size: calc(6rem / 2);
+            font-family: 'LeeSeoyun';
+            border: 0.1rem solid #5D639D;
+            border-radius: calc(6rem * 0.2);
+            background: #7b83ca;
+            color: #F2F2F2;
+            box-shadow: 0.4rem 0.4rem 0 0 #5D639D,
+                0.8rem 0.8rem 0 0 #5D639D,
+                1rem 1rem 0 0 #5D639D,
+                1.6rem 1.6rem 0 0 #5D639D;
+            transition: 0.2s ease;
+
+            &:hover {
+                cursor: pointer;
+                transform: translateX(0.2rem) translateY(0.2rem);
+                border: 0.1rem solid #5D639D;
+                background: #6f77bb;
+                box-shadow: 0.15rem 0.15rem 0 0 #5D639D,
+                    0.4rem 0.4rem 0 0 #5D639D,
+                    0.7rem 0.7rem 0 0 #5D639D,
+                    1.4rem 1.4rem 0 0 #5D639D;
+            }
+
+            &:active,
+            &.isDown {
+                cursor: grabbing;
+                transform: translateX(0.8rem) translateY(0.8rem);
+                border: 0.1rem solid #474d85;
+                background: #565d96;
+                box-shadow: 0.1rem 0.1rem 0 0 #474d85,
+                    0.2rem 0.2rem 0 0 #474d85,
+                    0.4rem 0.4rem 0 0 #474d85,
+                    0.9rem 0.9rem 0 0 #474d85;
+                filter: blur(0.02rem);
+                color: #F2F2F2;
+            }
+        }
+
+        .text {
             position: absolute;
-            top: 30%;
-            left: 8%;
+            top: 23%;
+            left: 51%;
+            transform: translateX(-50%);
+
+            .Enter {
+                display: none;
+                line-height: 1.1;
+                text-align: center;
+                color: #F2F2F2;
+
+                p {
+                    font-family: 'Bloopoly';
+                    font-size: 20rem;
+                    font-weight: normal;
+                    color: #FEC6E9;
+                    margin-bottom: 3rem;
+
+                }
+
+                span {
+                    font-family: 'LeeSeoyun';
+                    font-size: 5rem;
+                    font-weight: 500;
+                }
+
+                &.active {
+                    display: block;
+                }
+            }
+
+            .Shift {
+                display: none;
+                line-height: 1.1;
+                text-align: center;
+
+                color: #F2F2F2;
+
+                p {
+                    font-family: 'Bloopoly';
+                    font-size: 20rem;
+                    font-weight: normal;
+                    color: #FEC6E9;
+                    margin-bottom: 3rem;
+
+                }
+
+                span {
+                    font-family: 'LeeSeoyun';
+                    font-size: 4.8rem;
+                    font-weight: 500;
+                }
+
+                &.active {
+                    display: block;
+                }
+            }
+
+            .Ctrl {
+                display: none;
+                line-height: 1.1;
+                text-align: center;
+
+                color: #F2F2F2;
+
+                p {
+                    font-family: 'Bloopoly';
+                    font-size: 20rem;
+                    font-weight: normal;
+                    color: #FEC6E9;
+                    margin-bottom: 3rem;
+
+                }
+
+                span {
+                    font-family: 'LeeSeoyun';
+                    font-size: 4.6rem;
+                    font-weight: 500;
+                }
+
+                &.active {
+                    display: block;
+                }
+            }
         }
     }
 
@@ -136,10 +267,12 @@ body {
         overflow: hidden;
 
         h2 {
-            font-size: 5rem;
-            font-weight: 600;
+            font-family: 'Bloopoly';
+            font-size: 8rem;
+            /* font-weight: 600; */
+            color: #5D639D;
             text-align: center;
-            margin: 9rem auto 5rem;
+            margin: 8rem auto 4rem;
         }
 
         .info_wrap {
@@ -174,13 +307,13 @@ body {
 
                     .btn_wrap {
                         width: 100%;
-                        border: 0.1rem solid #121212;
+                        border: 0.1rem solid #5D639D;
                         border-radius: 1rem;
                         margin-top: 2rem;
                         transition: 0.3s;
 
                         &:hover {
-                            background-color: #121212;
+                            background-color: #5D639D;
 
                             span {
                                 color: #fff;
@@ -199,12 +332,14 @@ body {
 
                             span {
                                 font-size: 2rem;
+                                color: #5D639D;
                             }
 
                             img {
                                 width: 2.2rem;
                                 object-fit: cover;
                                 display: block;
+                                filter: invert(39%) sepia(31%) saturate(660%) hue-rotate(196deg) brightness(95%) contrast(91%);
                             }
                         }
                     }
@@ -226,8 +361,10 @@ body {
                             gap: 0.8rem;
 
                             h3 {
-                                font-size: 3rem;
+                                font-family: 'LeeSeoyun';
+                                font-size: 3.6rem;
                                 font-weight: 600;
+                                color: #5D639D;
                             }
 
                             .name {
@@ -251,14 +388,17 @@ body {
                                 line-height: 1.6;
                             }
                         }
+
                         .certificate {
                             display: flex;
                             flex-direction: column;
                             gap: 0.8rem;
 
                             h3 {
-                                font-size: 3rem;
+                                font-family: 'LeeSeoyun';
+                                font-size: 3.6rem;
                                 font-weight: 600;
+                                color: #5D639D;
                             }
 
                             .text_wrap {
@@ -276,8 +416,9 @@ body {
                                 }
                             }
                         }
-                        
+
                     }
+
                     .center {
                         .education {
                             display: flex;
@@ -285,7 +426,9 @@ body {
                             gap: 0.8rem;
 
                             h3 {
-                                font-size: 3rem;
+                                font-family: 'LeeSeoyun';
+                                color: #5D639D;
+                                font-size: 3.6rem;
                                 font-weight: 600;
                             }
 
@@ -300,20 +443,25 @@ body {
                             }
                         }
                     }
+
                     .right {
-                        
+
                         .experience {
                             display: flex;
                             flex-direction: column;
                             gap: 1rem;
+
                             .text_wrap {
                                 display: flex;
                                 gap: 1rem;
                                 align-items: flex-end;
                             }
+
                             h3 {
-                                font-size: 3rem;
+                                font-family: 'LeeSeoyun';
+                                font-size: 3.6rem;
                                 font-weight: 600;
+                                color: #5D639D;
                             }
 
                             span {
@@ -326,14 +474,14 @@ body {
                             }
                         }
 
-                        
+
                     }
                 }
             }
         }
 
         .skills {
-            margin-top: 18rem;
+            margin-top: 13rem;
 
             .swiper-wrapper {
                 width: 100%;
@@ -369,11 +517,10 @@ body {
             overflow: hidden;
             position: relative;
             perspective: 100svh;
-            width: 100%;
             background-color: #121212;
 
             h2 {
-                font-family: 'Rosemartin';
+                font-family: 'Bloopoly';
                 font-size: 20rem;
                 opacity: 0.1;
                 position: absolute;
@@ -530,12 +677,17 @@ body {
         .snap {
             scroll-snap-align: start;
         } */
+        
 
         .kpass {
             width: 100%;
             height: 100vh;
             display: flex;
             background: #78B1F5;
+            /* position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(0%); */
 
             .left {
                 width: 55.72%;
@@ -748,7 +900,11 @@ body {
             width: 100%;
             height: 100vh;
             display: flex;
-            overflow: hidden;
+            /* overflow: hidden; */
+            /* position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(0%); */
 
             .left {
                 width: 44.28%;
@@ -963,6 +1119,10 @@ body {
             height: 100vh;
             display: flex;
             overflow: hidden;
+            /* position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(0%); */
 
             .left {
                 width: 55.72%;
@@ -1031,6 +1191,7 @@ body {
             .right {
                 width: 44.28%;
                 position: relative;
+                background-color: #fff;
 
                 .img_wrap {
                     width: 52.94%;
@@ -1174,6 +1335,10 @@ body {
             width: 100%;
             height: 100vh;
             display: flex;
+            /* position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(0%); */
 
             .left {
                 width: 44.28%;
@@ -1385,13 +1550,14 @@ body {
 
     .clone_coding {
         width: 100%;
-        margin:15rem auto 20rem;
+        margin: 17rem auto 20rem;
 
         h2 {
-            font-size: 5rem;
-            font-weight: 600;
+            font-family: 'Bloopoly';
+            font-size: 8rem;
+            color: #5D639D;
             text-align: center;
-            margin-bottom: 10rem;
+            margin-bottom: 8rem;
         }
 
         .list {
@@ -1513,8 +1679,9 @@ body {
         margin: 10rem auto 25rem;
 
         h2 {
-            font-size: 5rem;
-            font-weight: 600;
+            font-family: 'Bloopoly';
+            font-size: 8rem;
+            color: #5D639D;
             text-align: center;
             margin-bottom: 15rem;
         }
@@ -1527,89 +1694,98 @@ body {
                 transition-timing-function: linear;
 
                 .swiper-slide {
-                        position: relative;
-                        border-radius: 2rem;
-                        overflow: hidden;
-                        &:hover {
-                            .hover_text {
-                                display: block;
-                                bottom: 0;
-                                transition: bottom 0.5s;
-                            }
-                        }
-                        .img_wrap {
-                            width: 100%;
-                            box-shadow: 0 0 1rem #00000030;
-                            overflow: hidden;
-                            a {
-                                display: block;
-                                width: 100%;
-                                padding-bottom: 100%;
-                                position: relative;
-                                img {
-                                    width: 100%;
-                                    object-fit: cover;
-                                    display: block;
-                                    box-shadow: 0 0 1rem #00000030;
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                }
-                            }
-                        }
+                    position: relative;
+                    border-radius: 2rem;
+                    overflow: hidden;
+
+                    &:hover {
                         .hover_text {
+                            display: block;
+                            bottom: 0;
+                            transition: bottom 0.5s;
+                        }
+                    }
+
+                    .img_wrap {
+                        width: 100%;
+                        box-shadow: 0 0 1rem #00000030;
+                        overflow: hidden;
+
+                        a {
+                            display: block;
                             width: 100%;
-                            height: 50%;
+                            padding-bottom: 100%;
+                            position: relative;
+
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                                display: block;
+                                box-shadow: 0 0 1rem #00000030;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
+                    }
+
+                    .hover_text {
+                        width: 100%;
+                        height: 50%;
+                        position: absolute;
+                        bottom: -100%;
+                        left: 0;
+                        background-color: #000000c4;
+                        border-top-right-radius: 2rem;
+                        border-top-left-radius: 2rem;
+                        z-index: 99;
+
+                        .icon_wrap {
+                            width: 15%;
+                            padding-bottom: 100%;
+                            position: relative;
+                            top: 2rem;
+                            left: 50%;
+                            transform: translateX(-50%);
+
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
+
+                        p {
+                            font-size: 2rem;
+                            color: #fff;
+                            white-space: nowrap;
+                            text-align: center;
+                            line-height: 1.6;
                             position: absolute;
-                            bottom: -100%;
-                            left: 0;
-                            background-color: #000000c4;
-                            border-top-right-radius: 2rem;
-                            border-top-left-radius: 2rem;
-                            /* display: none; */
-                            z-index: 99;
-                            .icon_wrap {
-                                width: 15%;
-                                padding-bottom: 100%;
-                                position: relative;
-                                top: 2rem;
+                            left: 50%;
+                            top: 65%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+
+                .img5 {
+                    .img_wrap {
+                        box-shadow: none;
+
+                        a {
+                            img {
+                                width: 70%;
                                 left: 50%;
                                 transform: translateX(-50%);
-                                img {
-                                    width: 100%;
-                                    object-fit: cover;
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                }
-                            }
-                            p {
-                                font-size: 2rem;
-                                color: #fff;
-                                white-space: nowrap;
-                                text-align: center;
-                                line-height: 1.6;
-                                position: absolute;
-                                left: 50%;
-                                top: 65%;
-                                transform: translate(-50%, -50%);
                             }
                         }
                     }
-                    .img5 {
-                        .img_wrap {
-                            box-shadow: none;
-                            a {
-                                img {
-                                    width: 70%;
-                                    left: 50%;
-                                    transform: translateX(-50%);
-                                }
-                            }
-                        }
-                        
-                    }
-                
+
+                }
+
             }
         }
     }
@@ -1629,21 +1805,27 @@ body {
             width: 100%;
             display: flex;
             justify-content: space-between;
-            margin-top: 5rem;
-            padding: 0 8rem;
+            align-items: center;
+            margin-top: 4rem;
+            padding: 0 6rem;
+            z-index: 9999;
 
             li {
                 a {
-                    font-family: 'Rosemartin';
-                    color: #fff;
-                    font-size: 4rem;
-                    font-weight: 500;
+                    font-family: 'Bloopoly';
+                    color: #FEC6E9;
+                    font-size: 5rem;
+                    letter-spacing: 0.1rem;
 
                     img {
                         width: 9rem;
                         object-fit: cover;
                         display: block;
                     }
+                }
+
+                &:nth-child(2) a {
+                    font-size: 7rem;
                 }
             }
         }
@@ -1743,6 +1925,7 @@ body {
                         border: 0.1rem solid #fff;
                         border-radius: 5rem;
                         transition: 0.3s;
+
                         &:hover {
                             background-color: #fff;
                             color: #121212;
