@@ -1502,17 +1502,23 @@ body {
   padding: 0 6rem;
   z-index: 9999;
 }
+.main .contact .contact_header li {
+  transition: 0.3s;
+}
 .main .contact .contact_header li a {
   font-family: "Bloopoly";
   color: #FEC6E9;
   font-size: 5rem;
   letter-spacing: 0.1rem;
 }
-.main .contact .contact_header li a img {
-  width: 9rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  display: block;
+.main .contact .contact_header li:first-child:hover {
+  transform: scale(1.15) rotate(-4deg);
+}
+.main .contact .contact_header li:nth-child(2):hover {
+  transform: scale(1.15);
+}
+.main .contact .contact_header li:last-child:hover {
+  transform: scale(1.15) rotate(4deg);
 }
 .main .contact .contact_header li:nth-child(2) a {
   font-size: 7rem;

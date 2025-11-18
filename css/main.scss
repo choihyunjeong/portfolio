@@ -1823,11 +1823,21 @@ body {
                     color: #FEC6E9;
                     font-size: 5rem;
                     letter-spacing: 0.1rem;
-
-                    img {
-                        width: 9rem;
-                        object-fit: cover;
-                        display: block;
+                }
+                transition: 0.3s;
+                &:first-child {
+                    &:hover {
+                        transform: scale(1.15) rotate(-4deg);
+                    }
+                }
+                &:nth-child(2) {
+                    &:hover {
+                        transform: scale(1.15);
+                    }
+                }
+                &:last-child {
+                    &:hover {
+                        transform: scale(1.15) rotate(4deg);
                     }
                 }
 
