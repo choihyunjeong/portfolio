@@ -27,6 +27,7 @@ body {
     left: 0;
     z-index: 9999;
     display: block;
+
     &.active {
         display: none;
     }
@@ -60,7 +61,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        
+
 
         .logo {
             a {
@@ -677,7 +678,7 @@ body {
         .snap {
             scroll-snap-align: start;
         } */
-        
+
 
         .kpass {
             width: 100%;
@@ -1699,10 +1700,14 @@ body {
                     overflow: hidden;
 
                     &:hover {
-                        .hover_text {
-                            display: block;
-                            bottom: 0;
-                            transition: bottom 0.5s;
+                        .img_wrap {
+                            a {
+                                .hover_text {
+                                    display: block;
+                                    bottom: 0;
+                                    transition: bottom 0.5s;
+                                }
+                            }
                         }
                     }
 
@@ -1726,49 +1731,51 @@ body {
                                 top: 0;
                                 left: 0;
                             }
-                        }
-                    }
 
-                    .hover_text {
-                        width: 100%;
-                        height: 50%;
-                        position: absolute;
-                        bottom: -100%;
-                        left: 0;
-                        background-color: #000000c4;
-                        border-top-right-radius: 2rem;
-                        border-top-left-radius: 2rem;
-                        z-index: 99;
-
-                        .icon_wrap {
-                            width: 15%;
-                            padding-bottom: 100%;
-                            position: relative;
-                            top: 2rem;
-                            left: 50%;
-                            transform: translateX(-50%);
-
-                            img {
+                            .hover_text {
                                 width: 100%;
-                                object-fit: cover;
+                                height: 50%;
                                 position: absolute;
-                                top: 0;
+                                bottom: -100%;
                                 left: 0;
+                                background-color: #000000c4;
+                                border-top-right-radius: 2rem;
+                                border-top-left-radius: 2rem;
+                                z-index: 99;
+
+                                .icon_wrap {
+                                    width: 15%;
+                                    padding-bottom: 100%;
+                                    position: relative;
+                                    top: 2rem;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+
+                                    img {
+                                        width: 100%;
+                                        object-fit: cover;
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                    }
+                                }
+
+                                p {
+                                    font-size: 2rem;
+                                    color: #fff;
+                                    white-space: nowrap;
+                                    text-align: center;
+                                    line-height: 1.6;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 65%;
+                                    transform: translate(-50%, -50%);
+                                }
                             }
                         }
-
-                        p {
-                            font-size: 2rem;
-                            color: #fff;
-                            white-space: nowrap;
-                            text-align: center;
-                            line-height: 1.6;
-                            position: absolute;
-                            left: 50%;
-                            top: 65%;
-                            transform: translate(-50%, -50%);
-                        }
                     }
+
+
                 }
 
                 .img5 {
