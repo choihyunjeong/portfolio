@@ -207,6 +207,19 @@
 
             });
 
+            let modalBtn = $('.clone_coding .modal_btn');
+            let modal = $('.clone_coding .modal_inner');
+            let modalCloseBtn = $('.clone_coding .modal_inner .close_btn');
+            
+            modalBtn.on('click', function(){
+                modal.addClass('on');
+            });
+            modalCloseBtn.on('click', function(){
+                modal.removeClass('on');
+            });
+            modal.on('click', function(){
+                modal.removeClass('on');
+            });
 
             Fancybox.bind("[data-fancybox]", {
                 on: {
@@ -590,10 +603,16 @@
                                 <h3>ILLUMIEL</h3>
                                 <span>일루미엘</span>
                             </div><!-- .title end -->
-                            <div class="btn_wrap">
-                                <a href="https://choihyunjeong.github.io/illumiel/" target="_blank"
-                                    class="btn_hover"><img src="./img/icon_arrow_right_b.svg" alt="웹사이트가기버튼"></a>
-                            </div><!-- .btn_wrap end -->
+                            <div class="modal_wrap">
+                                <button type="button" class="modal_btn"><img src="./img/icon_arrow_right_b.svg" alt="모달버튼"></button>
+                                <div class="modal_inner">
+                                    <div class="modal">
+                                        <button type="button" class="close_btn">Close</button>
+                                        <p>업데이트중이니<br />
+                                            잠시만 기다려주세요!</p>
+                                    </div><!-- .modal end -->
+                                </div><!-- .modal_inner end -->
+                            </div><!-- .modal_wrap end -->
                         </div><!-- .title_wrap end -->
                         <div class="text_wrap">
                             <ul class="default">
