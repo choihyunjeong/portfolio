@@ -1582,7 +1582,10 @@ body {
 
                     .title_wrap {
                         color: #fff;
-
+                        .modal_wrap {
+                            display: flex;
+                            color: #121212;
+                        }
                         .btn_wrap {
                             display: flex;
                         }
@@ -1620,7 +1623,72 @@ body {
                             font-size: 2rem;
                         }
                     }
+                    .modal_wrap {
+                        display: none;
+                        .modal_btn {
+                            display: block;
+                            width: 5rem;
+                            height: 5rem;
+                            border-radius: 50%;
+                            background-color: #fff;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                            img {
+                                width: 2.8rem;
+                                object-fit: cover;
+                                display: block;
+                            }
+                        }
 
+                        .modal_inner {
+                            width: 100%;
+                            height: 100%;
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            background-color: #000000b1;
+                            z-index: 99;
+                            display: none;
+                            &.on {
+                                display: block;
+                            }
+                            .modal {
+                                width: 50rem;
+                                height: 30rem;
+                                background-color: #fff;
+                                border-radius: 3rem;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+
+                                .close_btn {
+                                    width: 6rem;
+                                    height: 6rem;
+                                    border-radius: 50%;
+                                    background-color: #5D639D;
+                                    font-family: 'LeeSeoyun';
+                                    font-size: 1.6rem;
+                                    color: #fff;
+                                    position: absolute;
+                                    top: 2rem;
+                                    right: 2rem;
+                                }
+
+                                p {
+                                    font-family: 'LeeSeoyun';
+                                    font-size: 3rem;
+                                    text-align: center;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                        }
+                    }
                     .btn_wrap {
                         display: none;
 
