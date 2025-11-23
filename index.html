@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="css/main.scss">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <script>
+        $(function () {
+
+            let headerNormal = document.querySelector('.header_normal');
+
+            let project = document.querySelector('.project');
+            let projectTop = project.offsetTop;
+            let windowHeight = window.innerHeight;
+            let mainVisual = document.querySelector('.main_visual');
+            let contact = document.querySelector('.contact');
+            let contactTop = contact.offsetTop;
+            let projectListTop = document.querySelector('.project_list').offsetTop
+
+
+            /* let menuBtn = $('.header_normal .nav .gnb .depth-01');
+            let menuText = $('.header_normal .nav .gnb .depth-02');
+            let menuClose = $('.header_normal .nav .gnb .depth-02 .menu_close')
+
+            menuBtn.on('click', function(){
+                menuText.addClass('active');
+            });
+            menuClose.on('click', function(){
+                menuText.removeClass('active');
+            }); */
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.scrollY;
+                //console.log(contactTop);
+                if (scrollTop < projectListTop) {
+                    headerNormal.classList.add('light');
+                } else {
+                    headerNormal.classList.remove('light');
+                }
+
+                if (scrollTop <= projectTop) {
+                    headerNormal.classList.add('active');
+                }
+
+                else if (scrollTop < contactTop) {
+                    headerNormal.classList.remove('active');
+
+                } else {
+                    headerNormal.classList.add('active');
+
+                }
+
+            });
+
+            const keyboardKeys = Array.from(document.querySelectorAll(".board button"));
+
+            document.addEventListener("keydown", (e) => {
+
+                const key = keyboardKeys.find((keyEl) => keyEl.dataset.key === e.key);
+                if (key && !key.classList.contains("isDown")) {
+                    key.classList.add("isDown");
+                    key.click();
+                }
+            });
+
+            document.addEventListener("keyup", (e) => {
+
+                const key = keyboardKeys.find((keyEl) => keyEl.dataset.key === e.key);
+                if (key) {
+                    key.classList.remove("isDown");
+                }
+            });
+
+
+            let tabCont = document.querySelectorAll('.text div');
+
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
+
+            let currentSplit;
+
+            function initTypingAnimation(selector) {
+                // 이전 SplitText 되돌리기
+                if (currentSplit) currentSplit.revert();
+
+                const target = document.querySelector(selector);
+                if (!target) return;
+
+                // 텍스트 쪼개기
+                currentSplit = new SplitText(target, { type: "words,chars" });
+
+                // 타이핑 애니메이션
+                gsap.from(currentSplit.chars, {
+                    duration: 0.1,
+                    opacity: 0,
+                    yPercent: 30,
+                    ease: "power2.out",
+                    stagger: 0.03
+                });
+            }
+
+            /* 폰트 로딩 후 최초 실행 */
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(() => initTypingAnimation('.text .Enter'));
+            } else {
+                window.addEventListener("load", () => initTypingAnimation('.text .Enter'));
+            }
+
+            /* 탭 클릭 시 전환 + 다시 SplitText 적용 */
+            keyboardKeys.forEach((btn, i) => {
+                btn.addEventListener("click", () => {
+                    tabCont.forEach(c => c.classList.remove("active"));
+                    keyboardKeys.forEach(b => b.classList.remove("isDown"));
+
+                    tabCont[i].classList.add("active");
+                    keyboardKeys[i].classList.add("isDown");
+
+                    const className = tabCont[i].classList[0]; // Enter / Shift / Ctrl
+                    initTypingAnimation(`.text .${className}`);
+                });
+            });
+
+
+            gsap
+                .timeline({
+                    scrollTrigger: {
+                        trigger: ".project_intro",
+                        start: "top top",
+                        end: "+=150%",
+                        pin: true,
+                        //markers: true,
+                        scrub: 1,
+                        anticipatePin: 1
+                    }
+                })
+                .to(
+                    ".zoom_item[data-layer='3']",
+                    {
+                        opacity: 1,
+                        z: 800,
+                        ease: "power1.inOut"
+                    },
+                    0
+                )
+                .to(
+                    ".zoom_item[data-layer='2']",
+                    {
+                        opacity: 1,
+                        z: 600,
+                        ease: "power1.inOut"
+                    },
+                    0
+                )
+                .to(
+                    ".zoom_item[data-layer='1']",
+                    {
+                        opacity: 1,
+                        z: 400,
+                        ease: "power1.inOut"
+                    },
+                    0
+                )
+                .to(
+                    ".heading",
+                    {
+                        opacity: 1,
+                        z: 80,
+                        ease: "power1.inOut",
+                        color: '#5D639D'
+                    },
+                    0
+                )
+                .to(
+                    ".project_intro",
+                    {
+                        backgroundColor: '#fff',
+                        z: 50,
+                        ease: "power1.inOut"
+                    },
+                    0
+                );
+
+
+            var swiper = new Swiper(".skillsSwiper", {
+                slidesPerView: 8,
+                spaceBetween: 150,
+                loop: true,
+                speed: 4000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 5,
+                        spaceBetween: 30,
+                    },
+                    768: {
+                        slidesPerView: 8,
+                        spaceBetween: 150,
+                    }
+                }
+            });
+
+            var swiper1 = new Swiper(".graphicSwiper", {
+                slidesPerView: 4,
+                spaceBetween: 100,
+                loop: true,
+                speed: 6000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                    0: {
+                        speed: 0,
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 100,
+                    }
+                }
+            });
+
+            let modalBtn = $('.clone_coding .modal_btn');
+            let modal = $('.clone_coding .modal_inner');
+            let modalCloseBtn = $('.clone_coding .modal_inner .close_btn');
+
+            modalBtn.on('click', function () {
+                modal.addClass('on');
+            });
+            modalCloseBtn.on('click', function () {
+                modal.removeClass('on');
+            });
+            modal.on('click', function () {
+                modal.removeClass('on');
+            });
+
+            Fancybox.bind("[data-fancybox]", {
+                on: {
+                    ready: (fancybox, slide) => {
+                        swiper1.autoplay.stop();
+                        swiper1.setTranslate(swiper1.getTranslate()); // 현재 위치 고정
+                    },
+                    destroy: (fancybox, slide) => {
+                        setTimeout(() => {
+                            swiper1.slideNext();
+                            swiper1.autoplay.start();
+                        }, 150);
+                    },
+                },
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+
+        <header class="header_normal">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="./index.html">CHJ</a>
+                </h1><!-- .logo end -->
+                <nav class="nav">
+                    <ul class="gnb">
+                        <li><a href="#PROJECT">PROJECT</a></li>
+                        <li><a href="#CLONE">CLONE CODING</a></li>
+                        <li><a href="#GRAPHIC">GRAPHIC DESIGN</a></li>
+                        <li><a href="#ABOUT">ABOUT</a></li>
+                        <li><a href="#CONTACT">CONTACT</a></li>
+                        <!-- <li class="mobile">
+                            <button type="button" class="depth-01">menu</button>
+                            <ul class="depth-02">
+                                <li><button type="button" class="menu_close">close</button></li>
+                                <li><a href="#PROJECT">PROJECT</a></li>
+                                <li><a href="#CLONE">CLONE CODING</a></li>
+                                <li><a href="#GRAPHIC">GRAPHIC DESIGN</a></li>
+                                <li><a href="#ABOUT">ABOUT</a></li>
+                                <li><a href="#CONTACT">CONTACT</a></li>
+                            </ul>
+                        </li> -->
+                    </ul><!-- .gnb end -->
+                </nav><!-- .nav end -->
+            </div><!-- .inner end -->
+        </header><!-- .header_normal end -->
+
+        <main class="main">
+
+            <section class="main_visual">
+                <div class="text">
+                    <div class="Enter active">
+                        <p>Enter</p>
+                        <span>새로운 시도를 시작하고,</span>
+                    </div>
+                    <div class="Shift">
+                        <p>Shift</p>
+                        <span>시선을 바꾸며 흥미를 이끌고,</span>
+                    </div>
+                    <div class="Ctrl">
+                        <p>Ctrl</p>
+                        <span>문제를 주도적으로 해결합니다.</span>
+                    </div>
+                </div><!-- .text end -->
+                <div class="board">
+                    <button class="key isDown" data-key="Enter">Enter</button>
+                    <button class="key" data-key="Shift">Shift</button>
+                    <button class="key" data-key="Control">Ctrl</button>
+                </div>
+            </section><!-- .main_visual end -->
+
+            <section class="project" id="PROJECT">
+                <div class="project_intro">
+                    <h2 class="heading">Project</h2>
+                    <div class="zoom_item" data-layer="2">
+                        <img src="./img/intro_img1.jpg" alt="상세페이지">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="2">
+                        <img src="./img/intro_img2.jpg" alt="올리브영메인홈">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="1">
+                        <img src="./img/intro_img3.jpg" alt="배스킨라빈스">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="2">
+                        <img src="./img/intro_img4.png" alt="영화의전당">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="3">
+                        <img src="./img/intro_img5.png" alt="자라">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="1">
+                        <img src="./img/intro_img6.jpg" alt="올리브영좋아요">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="3">
+                        <img src="./img/intro_img7.jpg" alt="올리브영카테고리">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="3">
+                        <img src="./img/intro_img8.png" alt="K패스">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="1">
+                        <img src="./img/intro_img9.jpg" alt="애견펜션">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="3">
+                        <img src="./img/intro_img10.jpg" alt="멤버십">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="2">
+                        <img src="./img/intro_img11.jpg" alt="캠핑장">
+                    </div><!-- .zoom_item end -->
+                    <div class="zoom_item" data-layer="1">
+                        <img src="./img/intro_img12.gif" alt="샌드위치포스터">
+                    </div><!-- .zoom_item end -->
+                </div><!-- .project_intro end -->
+            </section><!-- .project end -->
+
+            <section class="project_list">
+                <div class="kpass panel" id="ADAPTIVE">
+                    <div class="left">
+                        <img src="./img/kpass_bg.png" alt="k패스배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>K-패스</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_Figma.svg" alt="피그마아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_VSCode.svg" alt="비주얼코드아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>K패스 카드로 대중교통을 이용하면 이용요금의 일정비율만큼 환급됩니다!</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <div class="img_wrap">
+                            <img src="./img/mockup_kpass.png" alt="mockup_kpass">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>대중교통 이용요금의 일정비율을 환급해주는 사업인 k-패스 홈페이지 리뉴얼입니다. 다양한 사용자들이 이용하는 홈페이지인 만큼 쉽고 간단하게 절차를 이해할
+                                수 있도록 폰트와 이미지 크기를 고려하여 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>적응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 지역별혜택소개</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, scss, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, aos</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="img/" alt="">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/K-PASS/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="./img/icon_arrow_right.svg" alt="아이콘_화살표">
+                            </a>
+                            <a href="./img/process_kpass.pdf" target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/hrLTw74kB0yHGVN4xiQC3S/K-%ED%8C%A8%EC%8A%A4?node-id=0-1&p=f&t=eKi6vLteWoRF4PyE-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .kpass end -->
+
+
+                <div class="baskinrobbins panel" id="REPONSIVE">
+                    <div class="left">
+                        <div class="img_wrap">
+                            <img src="./img/mockup_baskinrobbins.png" alt="배스킨라빈스목업이미지">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>다국적 아이스크림 브랜드 배스킨라빈스 홈페이지 리디자인입니다. mz세대들의 흥미를 끌고 기존 고객들의 불편사항들을 고려하여 인터랙티브한 요소들을 사용하고
+                                폰트 가독성 등을 고려하여 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>반응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, gsap</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="./img/qr_baskinrobbins.svg" alt="배스킨큐알이미지">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/baskinrobbins/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="./img/icon_arrow_right.svg" alt="아이콘_화살표">
+                            </a>
+                            <a href="./img/process_baskinrobbins.pdf" target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/k5bTlhvC8JOdEwTya95bAG/%EB%B0%B0%EC%8A%A4%ED%82%A8%EB%9D%BC%EB%B9%88%EC%8A%A4?node-id=0-1&p=f&t=Y65XtG3uSTbesCsu-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <img src="./img/baskinrobbins_bg.jpg" alt="배스킨배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>배스킨라빈스</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_Figma.svg" alt="피그마아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_VSCode.svg" alt="비주얼코드아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>31가지 맛으로 표현하는 행복, 맛으로 나누는 유쾌한 순간</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .baskinrobbins end -->
+
+
+                <div class="ZARA panel">
+                    <div class="left">
+                        <img src="./img/zara_bg.jpg" alt="자라배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>ZARA</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_Figma.svg" alt="피그마아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_VSCode.svg" alt="비주얼코드아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>Creatives for 50 Years</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <div class="img_wrap">
+                            <img src="./img/mockup_zara.png" alt="자라목업이미지">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>스페인에 본사를 둔, 세계적인 패션 유통업체 인디텍스 그룹의 대표 브랜드인 자라 홈페이지 리디자인입니다. 비주얼적인 비율이 높은 홈페이지를 사용자의
+                                편의성을 고려해서 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>적응형 홈페이지 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 서브페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js, fullpage</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="./img/" alt="">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/zara/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="./img/icon_arrow_right.svg" alt="아이콘_화살표">
+                            </a>
+                            <a href="./img/process_zara.pdf" target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/Cs0pPpK9yumXw67qwhOzkY/ZARA-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8?node-id=83-1048&p=f&t=DOS6yyd4VehNvydc-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .zara end -->
+
+
+                <div class="BusanCinemaCenter panel" id="MOBILE">
+                    <div class="left">
+                        <div class="img_wrap">
+                            <img src="./img/mockup_BusanCinemaCenter.png" alt="영화의전당목업이미지">
+                        </div><!-- .img_wrap end -->
+                        <div class="text_wrap">
+                            <p>영화, 공연, 전시, 교육 등을 아우르는 복합문화공간인 영화의 전당 모바일 앱 리디자인입니다. 다양한 연령대가 이용하는 어플인 점을 고려하여 폰트의
+                                가독성과 이용이 간편하도록 제작하였습니다.</p>
+                            <div class="list_wrap">
+                                <ul class="list">
+                                    <li>
+                                        <strong>프로젝트</strong>
+                                        <span>모바일 어플 리뉴얼</span>
+                                    </li>
+                                    <li>
+                                        <strong>제작범위</strong>
+                                        <span>메인페이지, 서브페이지</span>
+                                    </li>
+                                    <li>
+                                        <strong>기여도</strong>
+                                        <span>기획, 디자인, 퍼블리싱 100%</span>
+                                    </li>
+                                    <li>
+                                        <strong>사용언어</strong>
+                                        <span>html, css, javascript, jquery</span>
+                                    </li>
+                                    <li>
+                                        <strong>라이브러리</strong>
+                                        <span>swiper-js</span>
+                                    </li>
+                                </ul><!-- .list end -->
+                                <div class="qr_wrap">
+                                    <img src="./img/qr_BusanCinemaCenter.svg" alt="영화의전당큐알이미지">
+                                </div><!-- .qr_wrap end -->
+                            </div><!-- .list_wrap end -->
+                        </div><!-- .text_wrap end -->
+                        <div class="link_wrap">
+                            <a href="https://choihyunjeong.github.io/busan_cinema_center/" target="_blank">
+                                <span>WEBSITE</span>
+                                <img src="./img/icon_arrow_right.svg" alt="아이콘_화살표">
+                            </a>
+                            <a href="./img/process_busancinemacenter.pdf" target="_blank">PROCESS</a>
+                            <a href="https://www.figma.com/design/WrkFfA2eJBhi9obyZnfn5H/%EC%98%81%ED%99%94%EC%9D%98-%EC%A0%84%EB%8B%B9?node-id=22-25&p=f&t=lzeodclXDkyRZzH0-0"
+                                target="_blank">FIGMA</a>
+                        </div><!-- .link_wrap end -->
+                    </div><!-- .left end -->
+                    <div class="right">
+                        <img src="./img/cinemacenter_bg.jpg" alt="영화의전당배경이미지">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h2>영화의 전당</h2>
+                                <div class="tool_wrap">
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_Figma.svg" alt="피그마아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                    <div class="icon_wrap">
+                                        <img src="./img/icon_VSCode.svg" alt="비주얼코드아이콘">
+                                    </div><!-- .icon_wrap end -->
+                                </div><!-- .tool_wrap end -->
+                            </div><!-- .title end -->
+                            <p>시민을 위한, 시민과 함께하는, 모두가 행복한 영화의 전당</p>
+                        </div><!-- .title_wrap end -->
+                    </div><!-- .right end -->
+                </div><!-- .BusanCinemaCenter end -->
+            </section><!-- .project_list end -->
+
+
+
+            <section class="clone_coding" id="CLONE">
+                <h2>CLONE CODING</h2>
+                <div class="list">
+                    <div class="item">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h3>ILLUMIEL</h3>
+                                <span>일루미엘</span>
+                            </div><!-- .title end -->
+                            <div class="modal_wrap">
+                                <button type="button" class="modal_btn"><img src="./img/icon_arrow_right_b.svg"
+                                        alt="모달버튼"></button>
+                                <div class="modal_inner">
+                                    <div class="modal">
+                                        <button type="button" class="close_btn">Close</button>
+                                        <p>업데이트중이니<br />
+                                            잠시만 기다려주세요!</p>
+                                    </div><!-- .modal end -->
+                                </div><!-- .modal_inner end -->
+                            </div><!-- .modal_wrap end -->
+                        </div><!-- .title_wrap end -->
+                        <div class="text_wrap">
+                            <ul class="default">
+                                <li>#메인페이지</li>
+                                <li>#javascript #jquery #swiper-js</li>
+                            </ul><!-- .default end -->
+                            <p class="hover">일루미엘 웹사이트를 모작하면서 호버시 바뀌는 마우스 커서에 대해 배웠습니다. 상단 팝업 배너와 다양한 스와이퍼 슬라이드, rem단위
+                                이용법, 이미지 필터 적용법을 습득하였습니다.</p>
+                        </div><!-- .text_wrap end -->
+                        <div class="img_wrap">
+                            <img src="./img/mockup_illumiel.png" alt="일루미엘목업이미지">
+                        </div><!-- .img_wrap end -->
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h3>DAESUNG</h3>
+                                <span>대성그룹</span>
+                            </div><!-- .title end -->
+                            <div class="btn_wrap">
+                                <a href="https://choihyunjeong.github.io/daesung/#" target="_blank"
+                                    class="btn_hover"><img src="./img/icon_arrow_right_b.svg" alt="웹사이트가기버튼"></a>
+                            </div><!-- .btn_wrap end -->
+                        </div><!-- .title_wrap end -->
+                        <div class="text_wrap">
+                            <ul class="default">
+                                <li>#메인페이지 #반응형</li>
+                                <li>#javascript #swiper-js #aos</li>
+                            </ul><!-- .default end -->
+                            <p class="hover">대성그룹 웹사이트를 모작하면서 가상요소 적용방법을 배웠습니다. 호버하면 바뀌는 헤더 배경과 로고 이미지와 가상요소로 호버시 바뀌는
+                                이미지, 버튼과 인풋 태그 작성법을 습득하였습니다.</p>
+                        </div><!-- .text_wrap end -->
+                        <div class="img_wrap">
+                            <img src="./img/mockup_daesung.png" alt="대성그룹목업이미지">
+                        </div><!-- .img_wrap end -->
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h3>SOCAR</h3>
+                                <span>쏘카</span>
+                            </div><!-- .title end -->
+                            <div class="btn_wrap">
+                                <a href="https://choihyunjeong.github.io/socar/#" target="_blank" class="btn_hover"><img
+                                        src="./img/icon_arrow_right_b.svg" alt="웹사이트가기버튼"></a>
+                            </div><!-- .btn_wrap end -->
+                        </div><!-- .title_wrap end -->
+                        <div class="text_wrap">
+                            <ul class="default">
+                                <li>#메인페이지 #반응형</li>
+                                <li>#javascript #swiper-js #aos</li>
+                            </ul><!-- .default end -->
+                            <p class="hover">쏘카 웹사이트를 모작하면서 반응형 웹사이트 제작하는 법을 배웠습니다. fixed 헤더, 동영상 첨부, 헤더 메뉴 구현, 반응형에 따라
+                                변하는 푸터 텍스트 레이아웃 작성법을 습득하였습니다.</p>
+                        </div><!-- .text_wrap end -->
+                        <div class="img_wrap">
+                            <img src="./img/mockup_socar.png" alt="쏘카목업이미지">
+                        </div><!-- .img_wrap end -->
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h3>INNOCEAN-S</h3>
+                                <span>이노션</span>
+                            </div><!-- .title end -->
+                            <div class="btn_wrap">
+                                <a href="https://choihyunjeong.github.io/innoceans/#" target="_blank"
+                                    class="btn_hover"><img src="./img/icon_arrow_right_b.svg" alt="웹사이트가기버튼"></a>
+                            </div><!-- .btn_wrap end -->
+                        </div><!-- .title_wrap end -->
+                        <div class="text_wrap">
+                            <ul class="default">
+                                <li>#메인비주얼 #반응형</li>
+                                <li>#javascript</li>
+                            </ul><!-- .default end -->
+                            <p class="hover">이노션 웹사이트를 모작하면서 반응형 헤더를 제작하는 법을 배웠습니다. 비주얼 위에 헤더, 네비게이션 호버시 변하는 텍스트 구조 작성법에
+                                대해 습득하였습니다.</p>
+                        </div><!-- .text_wrap end -->
+                        <div class="img_wrap">
+                            <img src="./img/mockup_innoceans.png" alt="이노션목업이미지">
+                        </div><!-- .img_wrap end -->
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <div class="title_wrap">
+                            <div class="title">
+                                <h3>MONEYTREE</h3>
+                                <span>머니트리</span>
+                            </div><!-- .title end -->
+                            <div class="btn_wrap">
+                                <a href="https://choihyunjeong.github.io/moneytree/" target="_blank"
+                                    class="btn_hover"><img src="img/icon_arrow_right_b.svg" alt="웹사이트가기버튼"></a>
+                            </div><!-- .btn_wrap end -->
+                        </div><!-- .title_wrap end -->
+                        <div class="text_wrap">
+                            <ul class="default">
+                                <li>#메인페이지</li>
+                                <li>#swiper-js #aos</li>
+                            </ul><!-- .default end -->
+                            <p class="hover">머니트리 웹사이트를 모작하면서 스와이퍼 슬라이드 구현방법을 배웠습니다. aos 사용법과 웹폰트 변환, 애니메이션 키프레임 구현방법에
+                                대해 습득하였습니다.</p>
+                        </div><!-- .text_wrap end -->
+                        <div class="img_wrap">
+                            <img src="img/mockup_moneytree.png" alt="머니트리목업이미지">
+                        </div><!-- .img_wrap end -->
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+            </section><!-- .clone_coding end -->
+
+            <section class="graphic_design" id="GRAPHIC">
+                <h2>GRAPHIC DESIGN</h2>
+                <div class="swiper graphicSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img1.jpg" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img1.jpg" alt="애견펜션포스터"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>클리핑 마스크를 사용하여<br />
+                                            애견펜션포스터를 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img2.jpg" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img2.jpg" alt="멤버십포스터"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>폰트를 활용하여 심플하고 깔끔한<br />
+                                            멤버십포스터를 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img3.jpg" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img3.jpg" alt="캠핑포스터"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>도형과 폰트를 활용하여<br />
+                                            캠핑포스터를 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img4.gif" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img4.gif" alt="샌드위치포스터"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>포토샵 gif를 활용하여 동적인<br />
+                                            샌드위치 포스터를 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide img5">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img5.jpg" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img5.jpg" alt="상세페이지"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_Photoshop.svg" alt="포토샵아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>AI툴을 활용하여 가상브랜드를 만들어<br />
+                                            그에 맞는 상세페이지를 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide img6">
+                            <div class="img_wrap">
+                                <a href="img/graphic_img6.png" data-fancybox="gallery">
+                                    <div class="img_box"><img src="img/graphic_img6.png" alt="블렌더모델링"></div>
+                                    <div class="hover_text">
+                                        <div class="icon_wrap">
+                                            <img src="img/icon_blender.svg" alt="블렌더아이콘">
+                                        </div><!-- .icon_wrap end -->
+                                        <p>블렌더를 사용하여 귀여운 느낌의<br />
+                                            모니터, 키보드와 키캡을 제작하였습니다.</p>
+                                    </div><!-- .hover_text -->
+                                </a>
+                            </div><!-- .img_wrap end -->
+                        </div><!-- .swiper-slide end -->
+                    </div><!-- .swiper-wrapper end -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div><!-- .swiper.graphicSwiper -->
+            </section><!-- .graphic_design end -->
+
+
+            <section class="about" id="ABOUT">
+                <h2>ABOUT</h2>
+                <div class="info_wrap">
+                    <div class="info">
+                        <div class="about_img">
+                            <div class="img_wrap">
+                                <img src="./img/profile_img.jpg" alt="profile_img">
+                            </div><!-- .img_wrap end -->
+                            <div class="btn_wrap">
+                                <a href="./img/resume.pdf" target="_blank" class="pdf_btn">
+                                    <span>이력서 PDF 다운로드</span>
+                                    <img src="./img/icon_download.svg" alt="icon_download">
+                                </a><!-- .pdf_btn end -->
+                            </div><!-- .btn_wrap end -->
+                        </div><!-- .about_img end -->
+                        <div class="about_info">
+                            <div class="left">
+                                <div class="profile">
+                                    <h3>Profile</h3>
+                                    <div class="name">
+                                        <strong>최현정</strong>
+                                        <span>CHOI HYUN JEONG</span>
+                                    </div><!-- .name end -->
+                                    <P>1995.08.11<br />
+                                        010-9542-9815<br />
+                                        luceteee@naver.com</P>
+                                </div><!-- .profile end -->
+                                <div class="certificate">
+                                    <h3>Certificate</h3>
+                                    <div class="text_wrap">
+                                        <p>패션스타일리스트</p>
+                                        <span>2017</span>
+                                    </div><!-- .text_wrap end -->
+                                    <div class="text_wrap">
+                                        <p>샵마스터3급</p>
+                                        <span>2017</span>
+                                    </div><!-- .text_wrap end -->
+                                </div><!-- .certificate end -->
+                            </div><!-- .left end -->
+                            <div class="center">
+                                <div class="education">
+                                    <h3>Education</h3>
+                                    <span>2011.03~2013.08</span>
+                                    <p>양운고등학교</p>
+                                    <span>2014.03-2022.02</span>
+                                    <p>동서대학교 패션디자인학과</p>
+                                    <span>2025.07~2025.11</span>
+                                    <p>그린컴퓨터아카데미<br />
+                                        UI/UX 반응형 웹디자인&<br />
+                                        웹퍼블리셔 양성과정 수료<br />
+                                        - 우수상, 모범상 수상</p>
+                                </div><!-- .education end -->
+                            </div><!-- .center end -->
+                            <div class="right">
+                                <div class="experience">
+                                    <h3>Experience</h3>
+                                    <div class="text_wrap">
+                                        <p>헤이미쉬 가죽공방 운영</p>
+                                        <span>2021~2022</span>
+                                    </div><!-- .text_wrap end -->
+                                    <div class="text_wrap">
+                                        <p>더플릭스 근무</p>
+                                        <span>2017.04~2018.09</span>
+                                    </div><!-- .text_wrap end -->
+                                    <p>홍보 썸네일 및 배너 제작<br />
+                                        쇼룸 운영 및 스타일리스트 응대</p>
+                                    <span>2016.03-2016.12</span>
+                                    <p>창업동아리 투웨이 주얼리 제작</p>
+                                    <span>2016.09-2016.12</span>
+                                    <p>동서대학교 뮤지컬과 4학년 졸업작품<br />
+                                        ‘레미제라블’ 뮤지컬 의상 제작</p>
+                                </div><!-- .experience end -->
+
+                            </div><!-- .right end -->
+                        </div><!-- .about_info end -->
+                    </div><!-- .info end -->
+                </div><!-- .info_wrap end -->
+                <div class="skills">
+                    <div class="swiper skillsSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Photoshop.svg" alt="icon_Photoshop">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Illustrator.svg" alt="icon_Illustrator">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Figma.svg" alt="icon_Figma">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_VSCode.svg" alt="icon_VSCode">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Git.svg" alt="icon_Git">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_html.svg" alt="icon_html">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_css.svg" alt="icon_css">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Sass.svg" alt="icon_Sass">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_JavaScript.svg" alt="icon_JavaScript">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                            <div class="swiper-slide">
+                                <div class="img_wrap">
+                                    <img src="./img/icon_Jquery.svg" alt="icon_Jquery">
+                                </div><!-- .img_wrap end -->
+                            </div><!-- .swiper-slide end -->
+                        </div><!-- .swiper-wrapper end -->
+                    </div><!-- .swiper.skillsSwiper end -->
+                </div><!-- .skills end -->
+            </section><!-- .about end -->
+
+
+
+
+            <section class="contact" id="CONTACT">
+                <ul class="contact_header">
+                    <li><a href="#PROJECT">Project</a></li>
+                    <li><a href="./index.html">CHJ</a></li>
+                    <li><a href="#ABOUT">About</a></li>
+                </ul><!-- .contact_header end -->
+                <div class="contact_wrap">
+                    <div class="address">
+                        <div class="img_wrap">
+                            <img src="./img/qr_kakao.png" alt="카카오톡QR코드">
+                        </div><!-- .img_wrap end -->
+                        <div class="call">
+                            <div class="phone">
+                                <img src="./img/icon_phone.svg" alt="전화번호아이콘">
+                                <span>010-9542-9815</span>
+                            </div><!-- .phone end -->
+                            <div class="email">
+                                <img src="./img/icon_email.svg" alt="이메일아이콘">
+                                <span>luceteee@naver.com</span>
+                            </div><!-- .email end -->
+                        </div><!-- .call end -->
+                    </div><!-- .address end -->
+                    <div class="list">
+                        <p>성실하게 배우고, 맡은 일은 끝까지 책임지는 태도를 가장 큰 자산으로 생각합니다.<br />
+                            끊임없이 배우고 시도하며, 팀워크를 통해 트렌드에 민감하게 반응하고, 새로운 기술을 실험하며,<br />
+                            사용자에게 더 나은 경험을 제공하는 신입 UI·UX 디자이너로 발전해 나가겠습니다.</p>
+                        <div class="btn_wrap">
+                            <a href="img/portfolio.pdf" target="_blank">포트폴리오 PDF</a>
+                            <a href="https://github.com/choihyunjeong" target="_blank">GITHUB</a>
+                        </div><!-- .btn_wrap end -->
+                    </div><!-- .list end -->
+                </div><!-- .contact_wrap end -->
+                <div class="copyright">
+                    <p>본 사이트는 상업적 목적이 아닌 개인 포트폴리오 사이트로 제작되었습니다. 일부 내용 및 폰트, 이미지 등은 그 출처가 따로 있음을 밝힙니다.</p>
+                    <p>COPYRIGHT © 2025. choihyunjeong All Right Reserved.</p>
+                </div><!-- .copyright end -->
+            </section><!-- .contact end -->
+        </main><!-- .main end -->
+
+    </div><!-- #wrap end -->
+
+</body>
+
+
+
+</html>
